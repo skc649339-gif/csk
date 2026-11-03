@@ -206,7 +206,7 @@ export default function StarDetailPanel({ star, palaceName, onClose }: StarDetai
                 </span>
               )}
             </div>
-            <button onClick={onClose} className="transition-colors text-lg leading-none" style={{ color: 'var(--t-faint)' }}>×</button>
+            <button onClick={onClose} aria-label="关闭星曜说明" className="transition-colors text-lg leading-none" style={{ color: 'var(--t-faint)', minWidth: 44, minHeight: 44 }}>×</button>
           </div>
 
           <div className="p-4 space-y-4 overflow-y-auto max-h-[560px]">
@@ -261,7 +261,7 @@ export default function StarDetailPanel({ star, palaceName, onClose }: StarDetai
                 <div>
                   <div className="text-[10px] tracking-widest mb-1.5 flex items-center gap-1.5" style={{ color: 'var(--t-faint)' }}>
                     <span className="w-3 h-px inline-block" style={{ background: 'var(--t-border-acc)' }} />
-                    倪海厦老师解读
+                    上游整理的倪师观点
                     <span className="w-3 h-px inline-block" style={{ background: 'var(--t-border-acc)' }} />
                   </div>
                   <p className="text-xs leading-relaxed" style={{ color: 'var(--t-text2)' }}>{detail.niHaixia}</p>

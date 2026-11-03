@@ -15,7 +15,7 @@
  *  - 倪师《天纪》紫微斗数讲义
  */
 
-import 'server-only';
+// Pure local rules: shared by static pages and the offline client (no server IO).
 import type { ZiweiChart, Palace, Star, SiHua } from './types';
 
 // ────────────────── 类型 ──────────────────

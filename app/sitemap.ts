@@ -11,6 +11,7 @@ import type { MetadataRoute } from 'next';
 import { ALL_BOOKS } from '@/lib/classics';
 import { getAllKnowledgeRoutes } from '@/lib/seo/knowledge';
 import { SITE_URL } from '@/lib/site';
+export const dynamic = 'force-static';
 
 const BASE_URL = SITE_URL;
 

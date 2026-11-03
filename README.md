@@ -1,5 +1,21 @@
 <div align="center">
 
+# iPhone 自用 PWA 版
+
+本分支在上游排盘引擎之上增加本地多命盘记录、公历/农历输入、手机操作和离线缓存。开发分支：`feature/iphone-pwa`；原始上游说明保留在下方。
+
+交付入口：[iPhone安装](IPHONE_INSTALL.md) · [csk部署](DEPLOY_GITHUB_PAGES.md) · [功能清单](FEATURES.md) · [测试报告](TEST_REPORT.md) · [验收报告](ACCEPTANCE_REPORT.md) · [上游审计](docs/UPSTREAM_AUDIT.md) · [许可检查](docs/LICENSE_AUDIT.md)。当前状态：本地版本已验证，GitHub建仓/发布需账号授权，真实iPhone待实机验收。
+
+Windows 需要 **Node.js 20.9 或更新的 LTS 版本**。双击 `START_WINDOWS.cmd`：首次自动安装依赖，随后生成生产版并在电脑 `http://localhost:3000` 启动预览。`BUILD_WINDOWS.cmd` 只构建，产物在 `out/`；`DEV_WINDOWS.cmd` 启动开发环境。首次安装依赖需要联网。支持 npm，或使用仓库提供的锁文件通过 pnpm 安装；脚本不会安装全局运行环境，也不需要 Mac、Xcode 或 Apple Developer 账号。
+
+本地预览服务只监听当前电脑，不是手机部署地址；开发模式也不提供完整离线缓存。iPhone 使用需要把生产版部署到 HTTPS 静态托管，并通过 Safari“分享 → 添加到主屏幕”。部署后电脑可关机。命盘保存在手机当前站点，备份应在主屏幕 App 内导出；不要把真实出生信息提交进代码仓库。
+
+GitHub Pages 项目站点需要构建时设置 `NEXT_PUBLIC_BASE_PATH=/仓库名`（不带末尾斜杠），自定义根域或 `用户名.github.io` 站点留空。`.github/workflows/deploy-pages.yml` 提供手动运行的构建、测试与发布流程，会自动识别路径；需要你自己的 GitHub 账号和仓库授权，并在仓库 Settings → Pages 选择 GitHub Actions。免费账号应使用公开仓库；公开的是应用代码，运行时保存的手机命盘不会进入仓库。未取得账号授权前，不表示已经部署或已经获得 HTTPS 地址。
+
+生产缓存由 `scripts/build-pwa.mjs` 在构建后生成，包括 `sw.js`、`precache-manifest.json` 和 `.nojekyll`。验证命令为 `npm run typecheck`、`npm test`、`npm run test:local`、`npm run build`、`npm run test:pwa`。iPhone Safari 安装、独立窗口、存储和飞行模式仍需真实设备验收，浏览器模拟不能代替实机结果。
+
+---
+
 # 紫微斗数 · 开源排盘引擎
 
 ### 算法是公开的传统智慧，不应该被锁在围墙里

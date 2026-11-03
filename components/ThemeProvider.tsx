@@ -17,20 +17,23 @@ function getInitialTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('ziwei-theme') as Theme | null;
-    if (saved === 'light' || saved === 'dark') setTheme(saved);
+    setTheme(getInitialTheme());
+    try {
+      const saved = localStorage.getItem('ziwei-theme');
+      if (saved === 'light' || saved === 'dark') setTheme(saved);
+    } catch { /* 禁用存储时主题仍可在当前会话切换 */ }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('ziwei-theme', theme);
+    try { localStorage.setItem('ziwei-theme', theme); } catch { /* 保持界面可用 */ }
   }, [theme, mounted]);
 
   const toggle = () => {

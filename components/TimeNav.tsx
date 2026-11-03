@@ -11,6 +11,8 @@ interface TimeNavProps {
   liunianYear: number;
   onViewChange: (view: TimeView) => void;
   onYearChange: (year: number) => void;
+  daXianIndex?: number;
+  onDaXianChange?: (index: number) => void;
 }
 
 /** 由年份计算天干索引 (0-9) */
@@ -43,8 +45,10 @@ export default function TimeNav({
   liunianYear,
   onViewChange,
   onYearChange,
+  daXianIndex,
+  onDaXianChange,
 }: TimeNavProps) {
-  const currentDx = chart.daXians[chart.currentDaXianIndex];
+  const currentDx = chart.daXians[daXianIndex ?? chart.currentDaXianIndex];
 
   // 计算当前叠加四化信息
   const getOverlayInfo = (): { stemName: string; overlay: Record<string, string> } | null => {
@@ -118,7 +122,8 @@ export default function TimeNav({
           {/* 年份 +/- */}
           <div className="flex items-center gap-0.5">
             <button
-              onClick={e => { e.stopPropagation(); onYearChange(liunianYear - 1); if (view !== 'liunian') onViewChange('liunian'); }}
+              aria-label="上一流年"
+              onClick={e => { e.stopPropagation(); onYearChange(Math.max(1900, liunianYear - 1)); if (view !== 'liunian') onViewChange('liunian'); }}
               className="text-[9px] w-4 h-4 flex items-center justify-center rounded"
               style={{ color: 'var(--t-faint)' }}
             >
@@ -132,7 +137,8 @@ export default function TimeNav({
               {liunianYear}
             </span>
             <button
-              onClick={e => { e.stopPropagation(); onYearChange(liunianYear + 1); if (view !== 'liunian') onViewChange('liunian'); }}
+              aria-label="下一流年"
+              onClick={e => { e.stopPropagation(); onYearChange(Math.min(2200, liunianYear + 1)); if (view !== 'liunian') onViewChange('liunian'); }}
               className="text-[9px] w-4 h-4 flex items-center justify-center rounded"
               style={{ color: 'var(--t-faint)' }}
             >
@@ -142,6 +148,11 @@ export default function TimeNav({
         </div>
       </div>
 
+      {onDaXianChange && view === 'daxian' && <label className="app-daxian-select">选择大限
+        <select aria-label="选择大限" value={daXianIndex ?? 0} onChange={e => onDaXianChange(Number(e.target.value))}>
+          {chart.daXians.map((dx, index) => <option key={index} value={index}>{dx.startAge}–{dx.endAge}岁 · {dx.palaceName}</option>)}
+        </select>
+      </label>}
       {/* 叠加四化说明行 */}
       {overlayInfo && (
         <motion.div

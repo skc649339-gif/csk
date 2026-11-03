@@ -63,6 +63,7 @@ export default function PalaceCell({
   const majorStars = stars.filter(s => s.type === 'major');
   const luckyStars = stars.filter(s => s.type === 'lucky');
   const shaStars = stars.filter(s => s.type === 'sha');
+  const minorStars = stars.filter(s => s.type === 'minor');
 
   return (
     <motion.div
@@ -70,6 +71,11 @@ export default function PalaceCell({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.35, delay, ease: 'easeOut' }}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`查看${name}宫位`}
+      aria-pressed={!!isSelected}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(); } }}
       className="relative flex flex-col p-1.5 cursor-pointer transition-all duration-200 h-full"
       style={{
         minHeight: '90px',
@@ -133,7 +139,7 @@ export default function PalaceCell({
           return (
             <div
               key={star.name}
-              className="flex items-center"
+              className="app-star-target flex items-center"
               onClick={e => { e.stopPropagation(); onStarClick?.(star); }}
             >
               <span className={clsx(
@@ -141,6 +147,7 @@ export default function PalaceCell({
                 star.brightness === 'bright' ? 'text-amber-300' : star.brightness === 'dim' ? 'text-amber-700/80' : 'text-amber-500',
               )}>
                 {star.name}
+                {star.brightnessRaw && <small className="ml-1 text-[9px] opacity-70">{star.brightnessRaw}</small>}
               </span>
               {star.siHua && <SiHuaBadge siHua={star.siHua} />}
               {overlaySiHua && (
@@ -196,6 +203,9 @@ export default function PalaceCell({
         </div>
       )}
 
+      {minorStars.length > 0 && <div className="flex flex-wrap gap-x-1 mt-1" style={{ color: 'var(--t-faint)' }}>
+        {minorStars.map(s => <span key={s.name} className="text-[9px]">{s.name}{s.brightnessRaw && <small>·{s.brightnessRaw}</small>}{s.siHua && <SiHuaBadge siHua={s.siHua} />}</span>)}
+      </div>}
     </motion.div>
   );
 }
