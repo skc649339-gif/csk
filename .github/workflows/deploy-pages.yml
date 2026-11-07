@@ -1,6 +1,12 @@
 name: Deploy iPhone PWA to GitHub Pages
 
 on:
+  push:
+    branches:
+      - feature/iphone-pwa
+    paths-ignore:
+      - DEPLOY_REPORT.md
+      - docs/deploy-evidence/**
   workflow_dispatch:
 
 permissions:
