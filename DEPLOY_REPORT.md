@@ -1,10 +1,14 @@
 # csk 线上部署报告
 
-日期：2026-11-07（Asia/Shanghai）。项目分支：`feature/iphone-pwa`。
+日期：2026-11-09（Asia/Shanghai）。项目分支：`feature/iphone-pwa`。
 
 ## 当前状态
 
-**等待 GitHub CLI 网页授权完成，尚未发布。**
+**BLOCKED_MANUAL：GitHub 插件已安装，当前会话尚未载入其操作工具；CLI 设备码请求被执行环境阻止，尚未发布。**
+
+用户通过手机操作，已报告完成 GitHub 连接；插件目录已实际确认 `installed: true`。这仅确认插件安装状态，尚未通过 GitHub API 核实连接账号或仓库写入权限。当前会话可用工具中没有 GitHub 操作工具，需要在同一项目新建对话载入插件后核实。交接见 `docs/deploy-evidence/CONTINUE_DEPLOYMENT.md`。
+
+2026-11-09 再次运行 CLI：`gh auth status --hostname github.com` 显示未登录；官方设备码请求失败，错误为 `connectex: An attempt was made to access a socket in a way forbidden by its access permissions`。未生成新设备码。旧设备码已失效，不应重用。用户无需在手机运行 Windows 脚本。
 
 真实 HTTPS 地址：**尚未取得**。目标是用户自己账号下的 `csk` 仓库。当前尚未确认 CLI 登录身份，因此未创建远端仓库、未推送代码、未启用 Pages。不会把预期格式的网址写成真实可访问地址。
 
@@ -15,7 +19,8 @@
 | 现有开发分支 | 已确认 `feature/iphone-pwa`，继续使用原项目 |
 | GitHub CLI | 官方便携版 2.103.3，已按官方 SHA256 校验；放在项目仓库以外的本地工具目录 |
 | 原 Git 凭据 | 凭据助手已配置；当前隔离环境无法读取 Windows 凭据库，这不代表用户的其他浏览器或终端未登录 |
-| CLI 网页授权 | 已启动官方设备授权流程；尚未收到成功回执，不收取聊天中的密码或 Token |
+| CLI 网页授权 | 当前未登录；重新请求设备码被执行环境网络限制阻止，不收取聊天中的密码或 Token |
+| GitHub 插件 | 已确认安装；用户报告已连接，当前会话未载入 GitHub 工具，连接身份及写入权限待实际核验 |
 | 仓库创建/推送权限 | 待 CLI 授权后实际核验；尚不能标记为已具备 |
 | 自动部署配置 | 已增加 `push` 到 `feature/iphone-pwa` 自动发布，并保留手动发布；只改报告或部署证据不会重复触发 |
 | 部署路径 | 工作流按仓库名生成 `/csk`；构建后 Manifest/SW/资源均使用该路径 |
