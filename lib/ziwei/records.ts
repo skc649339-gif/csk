@@ -1,4 +1,5 @@
 import type { BirthInfo, ZiweiChart } from './types';
+import { validateBirth, validateChart, validateRecord, sameBirth } from './record-validation';
 
 export const RECORDS_KEY = 'ziwei-personal-records-v1';
 export interface SavedRecord {
@@ -15,66 +16,21 @@ interface Envelope { version: 1; records: SavedRecord[] }
 function object(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
-function int(value: unknown, min: number, max: number): value is number {
-  return typeof value === 'number' && Number.isInteger(value) && value >= min && value <= max;
-}
-function validBirth(value: unknown): value is BirthInfo {
-  if (!object(value) || !int(value.year, 1899, 2051) || !int(value.month, 1, 12) || !int(value.day, 1, 31) ||
-      !int(value.hour, 0, 11) || !['male', 'female'].includes(String(value.gender))) return false;
-  const date = new Date(Date.UTC(value.year, value.month - 1, value.day));
-  if (date.getUTCFullYear() !== value.year || date.getUTCMonth() + 1 !== value.month || date.getUTCDate() !== value.day) return false;
-  for (const key of ['name', 'province', 'city']) if (value[key] !== undefined && typeof value[key] !== 'string') return false;
-  if (value.longitude !== undefined && (typeof value.longitude !== 'number' || !Number.isFinite(value.longitude) || Math.abs(value.longitude) > 180)) return false;
-  if (value.origInput !== undefined) {
-    const orig = value.origInput;
-    if (!object(orig) || !int(orig.year, 1900, 2050) || !int(orig.month, 1, 12) || !int(orig.day, 1, 31) ||
-        !int(orig.clockHour, 0, 23) || !int(orig.clockMinute, 0, 59)) return false;
-  }
-  return true;
-}
-function sameBirth(a: BirthInfo, b: BirthInfo) {
-  return a.year === b.year && a.month === b.month && a.day === b.day && a.hour === b.hour && a.gender === b.gender;
-}
-function validChart(value: unknown): value is ZiweiChart {
-  if (!object(value) || !validBirth(value.birthInfo) || !object(value.lunarInfo) || !Array.isArray(value.palaces) ||
-      value.palaces.length !== 12 || !Array.isArray(value.daXians) || typeof value.wuxingJuName !== 'string' ||
-      !int(value.mingGongBranch, 0, 11) || !int(value.shenGongBranch, 0, 11) || !int(value.ziweiPos, 0, 11) ||
-      !int(value.wuxingJu, 2, 6) || !int(value.currentDaXianIndex, -1, 11) ||
-      typeof value.currentAge !== 'number' || !Number.isFinite(value.currentAge)) return false;
-  const lunar = value.lunarInfo;
-  if (!int(lunar.lunarYear, 1899, 2051) || !int(lunar.lunarMonth, -12, 12) || lunar.lunarMonth === 0 ||
-      !int(lunar.lunarDay, 1, 30) || !int(lunar.yearStem, 0, 9) || !int(lunar.yearBranch, 0, 11) ||
-      typeof lunar.isLeapMonth !== 'boolean') return false;
-  const branches = new Set<number>();
-  for (const palace of value.palaces) {
-    if (!object(palace) || !int(palace.branch, 0, 11) || branches.has(palace.branch) || !int(palace.stem, 0, 9) ||
-        typeof palace.name !== 'string' || !Array.isArray(palace.stars)) return false;
-    branches.add(palace.branch);
-    for (const star of palace.stars) {
-      if (!object(star) || typeof star.name !== 'string' || !['major', 'minor', 'lucky', 'sha'].includes(String(star.type)) ||
-          // iztro represents an untransformed star as '' in runtime output;
-          // algorithm.ts uses a TypeScript assertion and deliberately keeps that marker.
-          // Accept it when saving/restoring the untouched upstream chart snapshot.
-          (star.siHua !== undefined && !['', '禄', '权', '科', '忌'].includes(String(star.siHua)))) return false;
-    }
-  }
-  return value.daXians.every(dx => object(dx) && int(dx.startAge, 0, 200) && int(dx.endAge, 0, 200) &&
-    int(dx.palaceBranch, 0, 11) && typeof dx.palaceName === 'string');
-}
-function validRecord(value: unknown): value is SavedRecord {
-  return object(value) && typeof value.id === 'string' && value.id.length > 0 && typeof value.label === 'string' &&
-    validBirth(value.birthInfo) && validChart(value.chart) && sameBirth(value.birthInfo, value.chart.birthInfo) &&
-    typeof value.createdAt === 'number' && Number.isFinite(value.createdAt) && value.createdAt > 0 &&
-    typeof value.updatedAt === 'number' && Number.isFinite(value.updatedAt) && value.updatedAt >= value.createdAt;
-}
-function decode(raw: string): Envelope {
+function parseEnvelope(raw: string): { version: 1; records: unknown[] } {
   let value: unknown;
   try { value = JSON.parse(raw); } catch { throw new Error('命盘数据不是有效 JSON，原数据已保留，请先备份再处理'); }
   if (!object(value) || value.version !== 1) throw new Error('命盘数据版本不受支持，原数据已保留');
-  if (!Array.isArray(value.records) || !value.records.every(validRecord)) throw new Error('命盘数据校验失败，原数据已保留');
-  const ids = value.records.map(record => record.id);
-  if (new Set(ids).size !== ids.length) throw new Error('命盘数据包含重复编号，原数据已保留');
+  if (!Array.isArray(value.records)) throw new Error('命盘数据校验失败：记录列表应为数组，原数据已保留');
+  if (value.exportedAt !== undefined && typeof value.exportedAt !== 'string') throw new Error('命盘数据校验失败：导出时间应为文字，原数据已保留');
   return { version: 1, records: value.records };
+}
+function decode(raw: string): Envelope {
+  const value = parseEnvelope(raw);
+  value.records.forEach((record, index) => validateRecord(record, `第 ${index + 1} 条记录`));
+  const records = value.records as SavedRecord[];
+  const ids = records.map(record => record.id);
+  if (new Set(ids).size !== ids.length) throw new Error('命盘数据包含重复编号，原数据已保留');
+  return { version: 1, records };
 }
 function storageOrThrow(storage?: RecordStorage): RecordStorage {
   if (storage) return storage;
@@ -83,10 +39,39 @@ function storageOrThrow(storage?: RecordStorage): RecordStorage {
   } catch { /* iOS private/restricted storage can throw on access. */ }
   throw new Error('此浏览器无法使用本地存储，请在 Safari 普通模式打开并允许网站数据');
 }
+function readRaw(storage: RecordStorage): string | null {
+  try { return storage.getItem(RECORDS_KEY); } catch { throw new Error('无法读取本地命盘，请检查 Safari 网站数据权限'); }
+}
 function read(storage: RecordStorage): SavedRecord[] {
-  let raw: string | null;
-  try { raw = storage.getItem(RECORDS_KEY); } catch { throw new Error('无法读取本地命盘，请检查 Safari 网站数据权限'); }
+  const raw = readRaw(storage);
   return raw === null ? [] : decode(raw).records;
+}
+
+export interface RecordInspection { records: SavedRecord[]; recoveryMessage: string | null }
+/** Read-only recovery view. Never rewrite, migrate, delete or silently repair stored bytes. */
+export function inspectRecords(storage?: RecordStorage): RecordInspection {
+  const raw = readRaw(storageOrThrow(storage));
+  if (raw === null) return { records: [], recoveryMessage: null };
+  try {
+    const envelope = parseEnvelope(raw), candidates: SavedRecord[] = [], errors: string[] = [];
+    envelope.records.forEach((record, index) => {
+      try { validateRecord(record, `第 ${index + 1} 条记录`); candidates.push(record); }
+      catch (error) { errors.push(error instanceof Error ? error.message : '记录格式异常'); }
+    });
+    const counts = new Map<string, number>();
+    candidates.forEach(record => counts.set(record.id, (counts.get(record.id) || 0) + 1));
+    const records = candidates.filter(record => counts.get(record.id) === 1);
+    const invalid = envelope.records.length - records.length;
+    return { records, recoveryMessage: invalid ? `有 ${invalid} 条记录暂时无法显示。${errors[0] || '命盘编号重复，原数据已保留'}。当前仅查看，请先导出原始数据。` : null };
+  } catch (error) {
+    return { records: [], recoveryMessage: `${error instanceof Error ? error.message : '本地数据格式异常'}。当前仅查看，请先导出原始数据。` };
+  }
+}
+/** Exports the exact stored string, including damaged data, without requiring it to decode. */
+export function exportRawRecords(storage?: RecordStorage): string {
+  const raw = readRaw(storageOrThrow(storage));
+  if (raw === null) throw new Error('没有本地命盘数据可导出');
+  return raw;
 }
 function write(storage: RecordStorage, records: SavedRecord[]): void {
   const raw = JSON.stringify({ version: 1, records } satisfies Envelope);
@@ -108,7 +93,8 @@ function uniqueId(records: SavedRecord[]) {
 
 /** Snapshot + original engine input; no network, silent eviction or deduplication. */
 export function saveRecord(info: BirthInfo, chart: ZiweiChart, storage?: RecordStorage): SavedRecord {
-  if (!validBirth(info) || !validChart(chart) || !sameBirth(info, chart.birthInfo)) throw new Error('命盘与出生信息不一致，未保存');
+  validateBirth(info, '出生信息'); validateChart(chart, '命盘');
+  if (!sameBirth(info, chart.birthInfo)) throw new Error('命盘与出生信息不一致，未保存');
   const target = storageOrThrow(storage);
   const records = read(target);
   const now = Date.now();

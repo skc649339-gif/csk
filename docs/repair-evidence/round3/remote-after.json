@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-09T11:01:34.052Z",
+  "branch": "refs/heads/feature/iphone-pwa",
+  "remoteHead": "587a084b67994f55fa4c32347334788765fca4e2",
+  "totalRuns": 1,
+  "runs": [
+    {
+      "id": 42583469729,
+      "head_branch": "feature/iphone-pwa",
+      "head_sha": "4085979420cd212362097f370179b9a1efbc74cd",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/skc649339-gif/csk/actions/runs/42583469729",
+      "created_at": "2026-11-09T08:05:34Z",
+      "updated_at": "2026-11-09T08:07:04Z"
+    }
+  ],
+  "scope": "Read-only GitHub GET. No push, merge, workflow dispatch or Pages publication."
+}

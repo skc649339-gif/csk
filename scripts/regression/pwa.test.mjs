@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { webcrypto } from 'node:crypto';
-import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, writeFile, rm, readdir } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -240,6 +240,35 @@ try {
     }
     const layout = await readFile(path.join(root, 'app/layout.tsx'), 'utf8');
     assert.ok(!layout.includes('@vercel/analytics') && !layout.includes('@vercel/speed-insights'));
+  });
+  await check('private noindex metadata and every HTML resource respect deployment base path', async () => {
+    const output = path.join(root, 'out');
+    const precache = JSON.parse(await readFile(path.join(output, 'precache-manifest.json'), 'utf8'));
+    const robots = await readFile(path.join(output, 'robots.txt'), 'utf8');
+    const sitemap = await readFile(path.join(output, 'sitemap.xml'), 'utf8');
+    assert.match(robots, /^Disallow: \/\s*$/m);
+    assert.ok(!/^(?:Host|Sitemap):/mi.test(robots), 'self-use build must not advertise a crawler host or sitemap');
+    assert.ok(!/<loc>/i.test(sitemap), 'self-use sitemap stays empty');
+    assert.ok(!/https?:\/\/(?:localhost|127\.0\.0\.1)/i.test(robots + sitemap));
+    let pages = 0;
+    async function scan(directory) {
+      for (const file of await readdir(directory, { withFileTypes: true })) {
+        const filename = path.join(directory, file.name);
+        if (file.isDirectory()) { await scan(filename); continue; }
+        if (!file.name.endsWith('.html')) continue;
+        pages++;
+        const html = await readFile(filename, 'utf8');
+        assert.match(html, /<meta[^>]*name="robots"[^>]*content="[^"]*noindex/i, filename);
+        for (const [, url] of html.matchAll(/(?:href|src|action)="([^"]+)"/g)) {
+          assert.ok(!/^https?:\/\/(?:localhost|127\.0\.0\.1)(?::|\/|$)/i.test(url), `development URL in ${filename}`);
+          if (url.startsWith('/') && !url.startsWith('//')) {
+            assert.ok(url === precache.basePath || url.startsWith(precache.basePath + '/'), `unscoped URL ${url} in ${filename}`);
+          }
+        }
+      }
+    }
+    await scan(output);
+    assert.ok(pages > 10);
   });
   console.log(`PWA unit/build checks: ${passed} passed.`);
 } finally {

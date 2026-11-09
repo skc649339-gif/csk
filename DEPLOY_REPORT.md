@@ -11,7 +11,9 @@
 - 成功运行：[Actions #42583469729](https://github.com/skc649339-gif/csk/actions/runs/42583469729)，2026-11-09 08:05:34–08:07:04 UTC。
 - 实际构建提交：`4085979420cd212362097f370179b9a1efbc74cd`。
 - Pages：`build_type=workflow`、HTTPS 强制开启；默认分支和 `github-pages` 允许部署分支均为 `feature/iphone-pwa`。
-- 实机验收：**NOT_TESTED，待用户在 iPhone Safari 和主屏幕 App 中亲自完成**。
+- 实机验收：**部分 USER_REPORTED_PASS**，设备为 **iPhone 16 Pro Max**；已确认启动、飞行模式冷启动排盘和保存。其余项目保持未核实，详见下表。
+
+第三阶段修复目前仅在本地，尚未推送或发布。上述线上运行和构建提交仍是原部署版本；本地修复验收见 `REPAIR_REPORT_ROUND3.md`，不能将其当作线上已更新。
 
 ## 身份与权限
 
@@ -55,7 +57,16 @@ GitHub 连接 API 和官方 CLI API 均确认登录账号为 `skc649339-gif`（I
 ## 浏览器与实机限制
 
 - **桌面浏览器：NOT_TESTED。** 已尝试使用 Computer Use 做真实页面访问检查。工具因无法可靠确定 Windows 当前浏览器 URL 而停止操作；未绕过该保护，也未将这次尝试记录为浏览器通过。
-- **iPhone Safari / 主屏幕 App：NOT_TESTED。** HTTP、资源哈希和云端测试不替代用户亲自进行的设备验收。
+- **iPhone 用户反馈：部分 USER_REPORTED_PASS。** 用户确认的启动、飞行模式冷启动排盘、保存与下方剩余未核实项目分开记录。审查员未直接操作 iPhone，桌面 Chromium、HTTP 和云端测试均不替代实机结果。
+
+| 真机项目 | 状态 |
+| --- | --- |
+| 设备 | iPhone 16 Pro Max；iOS 版本未提供 |
+| 启动 | USER_REPORTED_PASS |
+| 飞行模式冷启动排盘 | USER_REPORTED_PASS |
+| 保存 | USER_REPORTED_PASS |
+| 备份导入导出、指定删除、多份记录重新打开 | NOT_VERIFIED |
+| 主题保持、跨版本更新、长期存储稳定性 | NOT_VERIFIED |
 
 ## iPhone 安装
 
@@ -65,7 +76,7 @@ GitHub 连接 API 和官方 CLI API 均确认登录账号为 `skc649339-gif`（I
 
 ## 用户亲自完成的实机清单
 
-以下全部待实机验收。请自行记录 iPhone 型号、iOS 版本、日期及各项结果；真实出生资料无需发到聊天或 GitHub。
+上表是用户已明确反馈的结果。下列细分场景尚未逐项确认，不由“启动和保存通过”推断为全部通过。请自行补充 iOS 版本、日期及各项结果；真实出生资料无需发到聊天或 GitHub。
 
 - [ ] Safari 打开真实 HTTPS 页面，无空白、404 或资源错误。
 - [ ] 添加到主屏幕，图标和名称正确。

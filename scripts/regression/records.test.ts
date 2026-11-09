@@ -50,7 +50,7 @@ assert.throws(() => listRecords({ getItem: () => { throw new Error('denied'); },
 assert.throws(() => saveRecord({ ...info, day: 2 }, chart, storage), /不一致/);
 const badChart = JSON.parse(JSON.stringify(chart));
 badChart.palaces[0].branch = badChart.palaces[1].branch;
-assert.throws(() => saveRecord(info, badChart, storage), /不一致/);
+assert.throws(() => saveRecord(info, badChart, storage), /宫位地支重复/);
 const altered = JSON.parse(backup);
 altered.records[0].chart.palaces = [];
 assert.throws(() => importRecords(JSON.stringify(altered), storage), /校验失败/);
@@ -62,5 +62,5 @@ const emptyMarker = saveRecord(info, emptyMarkerChart, storage);
 assert.equal(emptyMarker.chart.palaces[0].stars[0].siHua, '', '保留 iztro 无四化的空串，不篡改引擎快照');
 const invalidMarkerChart = JSON.parse(JSON.stringify(chart));
 invalidMarkerChart.palaces[0].stars[0].siHua = '未知四化';
-assert.throws(() => saveRecord(info, invalidMarkerChart, storage), /不一致/);
+assert.throws(() => saveRecord(info, invalidMarkerChart, storage), /siHua/);
 console.log('✅ 本地记录：多盘、重开、快照、指定删除、备份往返、错误版本、损坏数据保护和存储写失败均通过');

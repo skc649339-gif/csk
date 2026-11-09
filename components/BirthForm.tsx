@@ -7,6 +7,7 @@ import { PROVINCES } from '@/lib/ziwei/cities';
 import { formToBirthInfo, calcTrueSolarBranch } from '@/lib/ziwei/share';
 import { calendarInputToSolar, solarToCalendarInput, type CalendarKind } from '@/lib/ziwei/calendar-input';
 import { LUNAR_YEAR_MIN, LUNAR_YEAR_MAX, leapMonthOfLunarYear } from '@/lib/ziwei/lunar-solar';
+import { SOLAR_INPUT_MAX, SOLAR_RANGE_LABEL } from '@/lib/ziwei/date-range';
 import { isChinaDST } from '@/lib/ziwei/dst-cn';
 
 export interface BirthFormState {
@@ -46,6 +47,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
   const longitude = form.province ? form.longitude : 120;
   const branch = form.unknownTime ? 0 : calcTrueSolarBranch(Number(form.clockHour), Number(form.clockMinute), longitude);
   const solar = dateResult.solar, leap = leapMonthOfLunarYear(year);
+  const yearMax = calendar === 'lunar' ? LUNAR_YEAR_MAX : SOLAR_INPUT_MAX.year;
   const dst = solar ? isChinaDST(solar.year, solar.month, solar.day) : false;
   const change = <K extends keyof BirthFormState>(key: K, value: BirthFormState[K]) => {
     setSubmitError(''); setForm(previous => ({ ...previous, [key]: value }));
@@ -83,11 +85,12 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
         <legend style={label}>出生日期</legend>
         <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>{(['solar', 'lunar'] as const).map(kind => <button key={kind} type="button" aria-pressed={calendar === kind} onClick={() => switchCalendar(kind)} style={{ ...input, flex: 1, borderColor: calendar === kind ? 'var(--t-gold, #b78b40)' : undefined }}>{kind === 'solar' ? '公历' : '农历'}</button>)}</div>
         <div style={row}>
-          <select aria-label="出生年份" name="year" value={form.year} onChange={event => change('year', event.target.value)} style={input} required><option value="">年份</option>{Array.from({ length: LUNAR_YEAR_MAX - LUNAR_YEAR_MIN + 1 }, (_, index) => LUNAR_YEAR_MAX - index).map(value => <option key={value} value={value}>{value}年</option>)}</select>
+          <select aria-label="出生年份" name="year" value={form.year} onChange={event => change('year', event.target.value)} style={input} required><option value="">年份</option>{Array.from({ length: yearMax - LUNAR_YEAR_MIN + 1 }, (_, index) => yearMax - index).map(value => <option key={value} value={value}>{value}年</option>)}</select>
           <select aria-label="出生月份" name="month" value={form.month} onChange={event => change('month', event.target.value)} style={input} required><option value="">月份</option>{Array.from({ length: 12 }, (_, index) => index + 1).map(value => <option key={value} value={value}>{value}月</option>)}</select>
           <select aria-label="出生日期" name="day" value={form.day} onChange={event => change('day', event.target.value)} style={input} required><option value="">日期</option>{Array.from({ length: calendar === 'solar' ? 31 : 30 }, (_, index) => index + 1).map(value => <option key={value} value={value}>{value}日</option>)}</select>
         </div>
         {calendar === 'lunar' && <><label style={{ ...hint, display: 'flex', alignItems: 'center', gap: 8, minHeight: 44 }}><input type="checkbox" checked={leapMonth} onChange={event => setLeapMonth(event.target.checked)} style={{ width: 20, height: 20 }} />这个月份是闰月</label><p style={hint}>{form.year ? `${year} 年${leap ? `有闰${leap}月` : '无闰月'}` : '请先选择农历年份'}。不存在的闰月或日期会阻止起盘。</p></>}
+        <p style={hint}>农历支持 {LUNAR_YEAR_MIN}–{LUNAR_YEAR_MAX} 年；对应公历支持 {SOLAR_RANGE_LABEL}，包含农历年末换算到次年的日期。</p>
         {solar && <p style={hint}>公历日期：{solar.year} 年 {solar.month} 月 {solar.day} 日</p>}
         {(attempted || (form.year && form.month && form.day)) && dateResult.error && <p role="alert" style={{ ...hint, color: '#d95858' }}>{dateResult.error}</p>}
       </fieldset>

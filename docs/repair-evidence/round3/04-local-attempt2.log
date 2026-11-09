@@ -1,0 +1,8 @@
+npm notice run ziwei-master@0.1.0 test:local
+npm notice run node scripts/run-tests.mjs local
+✅ 本地记录：多盘、重开、快照、指定删除、备份往返、错误版本、损坏数据保护和存储写失败均通过
+Record schema/recovery: legacy compatibility, 36 malformed cases, atomic imports, raw export and valid-record preservation passed.
+✅ 公农历输入：春节、闰月、小月拒绝、跨年往返、晚子时排盘一致均通过
+Date boundaries: 7 input/chart/save/reopen/export/import cycles passed; precise derived upper endpoint enforced.
+Navigation regression passed: single navigation, twelve palaces, selected period and annual sihua.
+local: 5/5 suites passed

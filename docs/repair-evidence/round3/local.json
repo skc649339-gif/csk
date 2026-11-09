@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-09T10:48:44.907Z",
+  "runtime": "v24.22.1",
+  "results": [
+    {
+      "file": "records.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 456,
+      "output": "✅ 本地记录：多盘、重开、快照、指定删除、备份往返、错误版本、损坏数据保护和存储写失败均通过\n"
+    },
+    {
+      "file": "records-schema.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 281,
+      "output": "Record schema/recovery: legacy compatibility, 36 malformed cases, atomic imports, raw export and valid-record preservation passed.\n"
+    },
+    {
+      "file": "calendar-input.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 494,
+      "output": "✅ 公农历输入：春节、闰月、小月拒绝、跨年往返、晚子时排盘一致均通过\n"
+    },
+    {
+      "file": "date-boundary.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 737,
+      "output": "Date boundaries: 7 input/chart/save/reopen/export/import cycles passed; precise derived upper endpoint enforced.\n"
+    },
+    {
+      "file": "navigation.test.tsx",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 492,
+      "output": "Navigation regression passed: single navigation, twelve palaces, selected period and annual sihua.\n"
+    }
+  ]
+}

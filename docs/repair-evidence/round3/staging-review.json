@@ -1,0 +1,11 @@
+{
+  "initialUnfilteredStagedDiffCheckExitCode": 2,
+  "localCommitCreatedByInitialAttempt": false,
+  "diagnostics": [
+    "docs/repair-evidence/round3/06-build.log:13: trailing whitespace (original Next build progress output)",
+    "docs/repair-evidence/round3/06-build.log:14: trailing whitespace (original Next build progress output)",
+    "docs/repair-evidence/round3/06-build.log:15: trailing whitespace (original Next build progress output)",
+    "docs/repair-evidence/round3/artifact-robots.txt:3: new blank line at EOF (unchanged generated artifact)"
+  ],
+  "resolution": "Preserve raw evidence exactly. Review source/tests/report whitespace separately, excluding docs/repair-evidence/round3. No application failure or code change involved."
+}

@@ -12,7 +12,7 @@ assert.throws(() => calendarInputToSolar(2024, 2, 30, 'solar'), /公历日期不
 assert.throws(() => calendarInputToSolar(2023, 2, 29, 'solar'), /公历日期不存在/);
 assert.throws(() => calendarInputToSolar(2024, 2, 1, 'lunar', true), /农历日期不存在/);
 assert.throws(() => calendarInputToSolar(1899, 1, 1, 'lunar'), /年份范围/);
-assert.throws(() => calendarInputToSolar(2051, 1, 1, 'solar'), /年份范围/);
+assert.throws(() => calendarInputToSolar(2051, 2, 11, 'solar'), /日期范围/);
 const shortMonth = Array.from({ length: 12 }, (_, index) => index + 1).find(month => lunarMonthDayCount(2024, month) === 29)!;
 assert.ok(shortMonth);
 assert.throws(() => calendarInputToSolar(2024, shortMonth, 30, 'lunar'), /农历日期不存在/, '小月不能静默改成29日');

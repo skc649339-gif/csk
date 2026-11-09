@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-09T10:48:42.188Z",
+  "runtime": "v24.22.1",
+  "results": [
+    {
+      "file": "pan-integrity.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 29763,
+      "output": "\n排盘完整性回归 — 768 个采样命盘\n\n\n采样统计: 机梁同宫盘 134 个(均验证辰/戌), 紫府盘 768 个(均验证对称)\n\n✅ 排盘完整性回归全过 (768 盘 × 7 条紫微铁律)\n\n"
+    },
+    {
+      "file": "dst-cn.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 271,
+      "output": "  ✅ 1930-1995 逐日差分全一致（比对 24106 天，其中 5802 天属夏令时）\n  ✅ 36 组区间的四个边界日全部正确\n  ✅ 表外年份（含用户问到的 1992）一律不命中\n  ✅ 辅助函数（年份表 / 区间文案）与金标准表一致\n  ✅ 1986 夏令时前一天\n  ✅ 1986 夏令时首日\n  ✅ ★1988 起始日：金标准 4/10（IANA 记 4/17，按铁律取金标准）\n  ✅ 1988 分歧区间内（IANA 认为尚未开始）\n  ✅ 1991 末代夏令时最后一天\n  ✅ 1991 夏令时结束次日\n  ✅ ★1992 已无夏令时（用户问的区间上界，实际 1991 年止）\n\n✅ 全部通过：与金标准逐日一致，边界与表外年份均正确。\n"
+    },
+    {
+      "file": "clock-adjust.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 250,
+      "output": "✓ 中国大陆夏令时（+9:00 对 +8:00）→ 减 60\n✓ 美东夏令时（-4:00 对 -5:00）→ 减 60\n✓ 马来西亚 1982 年前（+7:30 对 +8:00）→ 加 30\n✓ 14:30 减 60 → 13:30\n✓ 1:05 减 60 → 0:05\n✓ 0:30 减 60 跨到前一天 → null\n✓ 8:15 加 30 → 8:45\n✓ 23:45 加 30 跨到后一天 → null\n✓ 时没填 → null\n✓ 平移 0 分钟 → null\n✓ formatClock 补零\n✓ 国内不传 utcOffsetMinutes 与传 480 结果一致\n✓ 纽约经度修正 +4 分钟\n\n✓ 钟表时间平移回归全部通过\n"
+    },
+    {
+      "file": "sizhu-lichun-boundary.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 690,
+      "output": "  ✅ 会员案例 节气四柱年柱=癸未（立春前，不是甲申）\n  ✅ 会员案例 节气四柱月柱=乙丑（连带修正，不是丙寅）\n  ✅ 会员案例 非节气四柱年柱=甲申（农历正月初一口径，保持不变）\n  ✅ 2004-02-03 丑时（立春前一天）节气年柱=癸未\n  ✅ 2004-02-05 丑时（立春后一天）节气年柱=甲申\n  ✅ 2004-02-04 丑时(立春前) → 癸未\n  ✅ 2004-02-04 亥时(立春后) → 甲申\n  ✅ 非节气日 1990-06-15 午时 节气四柱稳定=庚午/壬午/辛亥/甲午\n  ✅ 日柱不受立春边界影响（会员案例=癸丑）\n  ✅ 时柱不受立春边界影响（会员案例丑时=癸丑）\n\n[sizhu-lichun-boundary] 10 项断言全部通过\n"
+    },
+    {
+      "file": "hongluan-tianxi.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 994,
+      "output": "✓ 甲寅案例与十二年支红鸾天喜映射、唯一性及对宫关系回归通过\n"
+    },
+    {
+      "file": "famous-hour-consistency.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 244,
+      "output": "✅ 样本时辰一致性：11 条样本 hour 均在 0–11，其中 11 条带时辰注释且与索引一致\n"
+    },
+    {
+      "file": "iztro-time-index-boundary.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 959,
+      "output": "iztro hour-index boundary regression passed\n"
+    },
+    {
+      "file": "solar-date-exists.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 646,
+      "output": "solar date existence regression passed\n"
+    },
+    {
+      "file": "gender-validation.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 515,
+      "output": "gender validation regression passed\n"
+    },
+    {
+      "file": "natal-dual-sihua-same-palace.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 471,
+      "output": "✓ natal dual-sihua same palace (戊年·默认四化表) is valid, not a display bug\n"
+    },
+    {
+      "file": "neutral-naming.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 287,
+      "output": "[neutral-naming] 159 个文件检查通过：没有第三方排盘软件的名称与拼音\n"
+    },
+    {
+      "file": "leap-policy-validation.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 624,
+      "output": "① 无效 policy 当场拒绝\n  ✅ 7 个无效值全部 RangeError 且信息点名 leapMonth policy\n② 显式 undefined 走默认 prev-month\n  ✅ 默认口径可用\n③ 四口径与神谕表逐项一致（闰六月上/下半月各一天）\n  ✅ 四口径 × 两日期全部与神谕表一致\n④ generateChart 端到端（合法 policy 排盘并回写 leapMonthPolicy）\n  ✅ 四口径端到端排盘正常，leapMonthPolicy 回写一致\n\n✅ 全部通过：无效 policy 当场拒绝，四口径互异且与定义一致。\n"
+    },
+    {
+      "file": "form-true-solar-day.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 243,
+      "output": "form true-solar day rollover regression passed\n"
+    },
+    {
+      "file": "birthform-birthinfo-consistency.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 250,
+      "output": "✅ BirthForm→BirthInfo 转换一致性：单一实现 + 晚子时边界（跨月/跨年）均正确\n"
+    },
+    {
+      "file": "heming-refresh.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 592,
+      "output": "Heming edited-form request regression passed\n"
+    },
+    {
+      "file": "heming-stream.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 574,
+      "output": "Heming SSE byte-fragment regressions passed\n"
+    },
+    {
+      "file": "patterns-sihua-bonus.test.ts",
+      "passed": true,
+      "exitCode": 0,
+      "milliseconds": 14048,
+      "output": "✓ 格局四化加分项按 siHua 判定（触发盘数：杀破狼 61、机月同梁 44、府相朝垣 6、阳梁昌禄 7）\n"
+    }
+  ]
+}

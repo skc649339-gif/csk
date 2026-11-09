@@ -1,0 +1,81 @@
+{
+  "baseline": "a600484a49255039d0725f1ba9e11ca81a948f97",
+  "date": "2026-11-09T10:48:45.169Z",
+  "results": [
+    {
+      "path": "lib/ziwei/algorithm.ts",
+      "sha256": "4734d6491010af6c553ca9c43509edbce11318467270668ca73129522e558021",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/constants.ts",
+      "sha256": "02f190b8e2718c202de239d57a7e26e0b7b8e1f5155ddce1dbfe92ca1d6eec4e",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/sihua.ts",
+      "sha256": "32600c0e77a3472196d14f670f569e4748205f4164996e009a8c13958bdf60cf",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/school-data.ts",
+      "sha256": "029dc0b4491eecbcefa47002bae9bd2745260ff92d4f9765bd50ed8e4f851bd1",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/school-tables.generated.ts",
+      "sha256": "182a255d0121cd4f5f692ad2b29780c3fa36f3e1861768062c3b89b31fca196c",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/types.ts",
+      "sha256": "1b906035368cebc2e6a9dd90372b8b097421e8687752c7278d069b8c5451e755",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/lunar-solar.ts",
+      "sha256": "5fdebda6ab16aa96b8cfc2efe2311e5bf2f4d5af130780d0a853a014a60474f0",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/share.ts",
+      "sha256": "52c4ea8135bc799ebbf473881d1a32ffb485e47aae549e5e3e6c567ce740ad97",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/true-solar-time.ts",
+      "sha256": "a8aead8de5eb62db55eb10fa3a0e4d264e96ca483752d2127f5391609a0dcddf",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/dst-cn.ts",
+      "sha256": "06b39645faa1a625614cb31cc19c604092abd32bfbed55caa0d40437c9bf8b84",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/clock-adjust.ts",
+      "sha256": "776f199c477ca2efbfdf2517866db50ca420faad358bc9987c47f3fec7b2ba2f",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/yunxian-context.ts",
+      "sha256": "81d7d55a34d885d4a07e2027a27f4ff3944b28baa054b0c58cd88c8741c3207b",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/shier-shen.ts",
+      "sha256": "1ea6c4d27298ea776f8ddac5212ca41c9832f1eccc8450d2cb109080d9ae0b0e",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/school-config.ts",
+      "sha256": "cf1cb62502001c609a05d8386048d5cc23ea07fb24a21f2dd9dae0dec210d46f",
+      "unchanged": true
+    },
+    {
+      "path": "lib/ziwei/cities.ts",
+      "sha256": "b7e4f21774e7a48f5bd9bddc14b3b5eecf79c35a6be6de416f6ee141c98829d9",
+      "unchanged": true
+    }
+  ]
+}

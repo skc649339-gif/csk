@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-09T10:18:03.751Z",
+  "baseline": "587a084b67994f55fa4c32347334788765fca4e2",
+  "p1": {
+    "accepted": 1,
+    "renderError": "Error: Objects are not valid as a React child (found: object with keys {invalid}). If you meant to render a collection of children, use an array instead."
+  },
+  "p2": {
+    "solar": {
+      "year": 2051,
+      "month": 1,
+      "day": 27
+    },
+    "saveError": "Error: 命盘与出生信息不一致，未保存"
+  },
+  "fixture": "records-v1-587a084.json",
+  "data": "Synthetic in-memory records only"
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "command": "npm ci --legacy-peer-deps",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:40:48.111527+00:00",
+    "completedAt": "2026-11-09T10:41:01.642818+00:00",
+    "seconds": 13.53,
+    "log": "01-install.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run typecheck",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:41:01.662094+00:00",
+    "completedAt": "2026-11-09T10:41:06.806887+00:00",
+    "seconds": 5.14,
+    "log": "02-typecheck.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run test:local",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:41:06.828480+00:00",
+    "completedAt": "2026-11-09T10:41:10.214780+00:00",
+    "seconds": 3.39,
+    "log": "04-local.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run typecheck",
+    "attempt": 2,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:47:48.008473+00:00",
+    "completedAt": "2026-11-09T10:47:50.510712+00:00",
+    "seconds": 2.52,
+    "log": "02-typecheck-attempt2.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm test",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:47:50.534259+00:00",
+    "completedAt": "2026-11-09T10:48:42.207425+00:00",
+    "seconds": 51.67,
+    "log": "03-upstream.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run test:local",
+    "attempt": 2,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:48:42.224730+00:00",
+    "completedAt": "2026-11-09T10:48:44.923473+00:00",
+    "seconds": 2.7,
+    "log": "04-local-attempt2.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run test:engine",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:48:44.940785+00:00",
+    "completedAt": "2026-11-09T10:48:45.186507+00:00",
+    "seconds": 0.25,
+    "log": "05-engine.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run build",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:48:45.204723+00:00",
+    "completedAt": "2026-11-09T10:49:09.913783+00:00",
+    "seconds": 24.7,
+    "log": "06-build.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm run test:pwa",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:49:09.932037+00:00",
+    "completedAt": "2026-11-09T10:49:10.483930+00:00",
+    "seconds": 0.55,
+    "log": "07-pwa.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm audit --json",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:49:10.502480+00:00",
+    "completedAt": "2026-11-09T10:49:13.344825+00:00",
+    "seconds": 2.84,
+    "log": "08-audit.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  },
+  {
+    "command": "npm audit --omit=dev --json",
+    "attempt": 1,
+    "exitCode": 0,
+    "startedAt": "2026-11-09T10:49:13.363155+00:00",
+    "completedAt": "2026-11-09T10:49:14.784338+00:00",
+    "seconds": 1.42,
+    "log": "09-audit-production.log",
+    "node": "v24.22.1",
+    "npm": "12.2.2"
+  }
+]

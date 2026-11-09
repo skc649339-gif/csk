@@ -1,5 +1,6 @@
 import { Solar } from 'lunar-javascript';
 import { lunarToSolar, LUNAR_YEAR_MIN, LUNAR_YEAR_MAX, type SolarDate } from './lunar-solar';
+import { isRealSolarDate, isSupportedSolarDate, SOLAR_RANGE_LABEL } from './date-range';
 
 export type CalendarKind = 'solar' | 'lunar';
 
@@ -7,19 +8,18 @@ export type CalendarKind = 'solar' | 'lunar';
 export function calendarInputToSolar(
   year: number, month: number, day: number, calendar: CalendarKind, leapMonth = false,
 ): SolarDate {
-  if (![year, month, day].every(Number.isInteger) || year < LUNAR_YEAR_MIN || year > LUNAR_YEAR_MAX) {
-    throw new RangeError(`出生年份范围为 ${LUNAR_YEAR_MIN}–${LUNAR_YEAR_MAX}`);
-  }
+  if (![year, month, day].every(Number.isInteger)) throw new RangeError('出生日期必须为整数');
   if (calendar === 'lunar') {
+    if (year < LUNAR_YEAR_MIN || year > LUNAR_YEAR_MAX) throw new RangeError(`农历出生年份范围为 ${LUNAR_YEAR_MIN}–${LUNAR_YEAR_MAX}`);
     const solar = lunarToSolar(year, month, day, leapMonth);
     if (!solar) throw new RangeError('这个农历日期不存在，请检查闰月和当月天数');
     return solar;
   }
   if (calendar !== 'solar') throw new RangeError('不支持的历法');
-  const date = new Date(Date.UTC(year, month - 1, day));
-  if (date.getUTCFullYear() !== year || date.getUTCMonth() + 1 !== month || date.getUTCDate() !== day) {
+  if (!isRealSolarDate(year, month, day)) {
     throw new RangeError('这个公历日期不存在，请检查年月日');
   }
+  if (!isSupportedSolarDate(year, month, day)) throw new RangeError(`公历出生日期范围为 ${SOLAR_RANGE_LABEL}`);
   return { year, month, day };
 }
 

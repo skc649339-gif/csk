@@ -1,0 +1,19 @@
+npm notice run ziwei-master@0.1.0 test:pwa
+npm notice run node scripts/regression/pwa.test.mjs
+PASS content hash deterministic; core included, reference HTML excluded
+PASS missing core build resource rejects generation
+PASS verified install reports ready; incomplete cache reports not ready
+PASS tampered core resource rejects installation and clears incomplete cache
+PASS 404 core resource rejects installation
+PASS activation removes only this app old cache
+PASS offline root/chart navigation and JS resolve from verified shell
+PASS RSC query never receives cached HTML; visited queries remain separate
+PASS cross-origin, API and non-GET requests bypass worker
+PASS uncached offline reference navigation has honest offline page
+PASS no-store responses are never cached
+PWA fd43be2f9f9faef88e32: 9 verified resources, 0.00 MiB. Output: C:\Users\ADMINI~1\AppData\Local\Temp\ziwei-pwa-test-5a7N8U
+PASS GitHub project base path: manifest, core cache, navigation, scope isolation
+PASS production manifest: Chinese identity, standalone, scope and real PNG sizes
+PASS production artifact manifest hashes match every output resource
+PASS private noindex metadata and every HTML resource respect deployment base path
+PWA unit/build checks: 15 passed.

@@ -1,0 +1,9 @@
+{
+  "scope": "Supplemental evidence-assembly verifier, not application tests. Actual console errors retained from execution.",
+  "attempts": [
+    {"attempt": 1, "exitCode": 1, "error": "AssertionError: /csk/chart/", "cause": "Verifier treated a directory URL as a file; resolved trailing slash to index.html."},
+    {"attempt": 2, "exitCode": 1, "error": "PermissionError: out/_next/static/chunks/app/robots.txt", "cause": "Verifier attempted to read a Next.js directory ending in .txt; added is_file guard."},
+    {"attempt": 3, "exitCode": 0, "result": "All supplemental source/artifact checks passed."},
+    {"attempt": 4, "exitCode": 0, "result": "Passed again after explicitly including actual PwaStatus.tsx and next.config.js file names in protected hash list."}
+  ]
+}

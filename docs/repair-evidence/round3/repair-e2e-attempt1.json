@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-09T10:51:41.152Z",
+  "scope": "Local-only isolated Chromium; synthetic records only; not iPhone validation",
+  "results": [
+    {
+      "name": "normal-legacy-atomic-boundary-offline",
+      "status": "PASS",
+      "milliseconds": 6669,
+      "details": {
+        "legacySnapshotUnchanged": true,
+        "atomicRejection": true,
+        "saveExportImportDelete": true,
+        "lunar2050SavedAndReopened": true,
+        "offlineProcessRestart": true,
+        "offlineNewChartSaved": true,
+        "records": 5,
+        "uncaughtErrors": 0
+      }
+    },
+    {
+      "name": "existing-damaged-active-record-recovery",
+      "status": "PASS",
+      "milliseconds": 3617,
+      "details": {
+        "refreshDoesNotCrash": true,
+        "validRecordsVisible": 2,
+        "originalBytesAndOrderPreserved": true,
+        "activePointerPreserved": true,
+        "rawExportExact": true,
+        "mutationsDisabled": true,
+        "unparseableDataExportable": true
+      }
+    },
+    {
+      "name": "render-boundary-fallback",
+      "status": "FAIL",
+      "milliseconds": 1,
+      "error": "Error: Cannot find module 'esbuild'\nRequire stack:\n- C:\\Users\\Administrator\\Documents\\Codex\\2026-11-09\\csk-app-source-docs-deploy-evidence\\repair-round3-20261109\\project\\scripts\\regression\\repair-e2e.mjs"
+    },
+    {
+      "name": "service-worker-upgrade-preserves-corrupt-and-good-data",
+      "status": "PASS",
+      "milliseconds": 5950,
+      "details": {
+        "waitingDoesNotRefreshForm": true,
+        "newControllerVersion": "fc0c3d6d3fbd609e069c",
+        "originalRecordStringPreserved": true,
+        "validRecordsVisible": 2,
+        "recoveryWorksAfterOfflineColdStart": true
+      }
+    }
+  ]
+}

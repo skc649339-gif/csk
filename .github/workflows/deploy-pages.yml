@@ -33,10 +33,12 @@ jobs:
         run: |
           repo_name="${GITHUB_REPOSITORY#*/}"
           if [[ "${repo_name,,}" == "${GITHUB_REPOSITORY_OWNER,,}.github.io" ]]; then
-            echo 'NEXT_PUBLIC_BASE_PATH=' >> "$GITHUB_ENV"
+            base_path=''
           else
-            echo "NEXT_PUBLIC_BASE_PATH=/$repo_name" >> "$GITHUB_ENV"
+            base_path="/$repo_name"
           fi
+          echo "NEXT_PUBLIC_BASE_PATH=$base_path" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_SITE_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io$base_path" >> "$GITHUB_ENV"
           echo 'NEXT_TELEMETRY_DISABLED=1' >> "$GITHUB_ENV"
       - run: npm ci --legacy-peer-deps
       - run: npm run typecheck

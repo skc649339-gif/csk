@@ -1,0 +1,10 @@
+{
+  "command": "node scripts/regression/repair-e2e.mjs",
+  "attempt": 1,
+  "exitCode": 1,
+  "startedAt": "2026-11-09T10:51:23.272709+00:00",
+  "completedAt": "2026-11-09T10:51:41.165322+00:00",
+  "seconds": 17.91,
+  "log": "10-e2e-attempt1.log",
+  "scope": "Only local synthetic test contexts; no real iPhone or production data"
+}
