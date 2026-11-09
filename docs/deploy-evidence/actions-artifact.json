@@ -1,0 +1,15 @@
+{
+  "repository": "skc649339-gif/csk",
+  "runId": 42583469729,
+  "runUrl": "https://github.com/skc649339-gif/csk/actions/runs/42583469729",
+  "buildCommit": "4085979420cd212362097f370179b9a1efbc74cd",
+  "artifactId": 13657763755,
+  "artifactName": "github-pages",
+  "githubAdvertisedZipDigest": "sha256:f9bad69a3429f11a70911fd14bad08808b5f27ea58dfdf91ef78e74a9e071254",
+  "downloadedTarSha256": "c5ea0752b2da85623374a2096326bc4eaff89346949863d79ba1e0d5932c50e7",
+  "extractedFileCount": 1134,
+  "precacheVersion": "260b7801028e3f22e730",
+  "precacheResourceCount": 55,
+  "basePath": "/csk",
+  "source": "Actual successful GitHub Actions Pages artifact, downloaded by gh run download"
+}

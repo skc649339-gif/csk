@@ -1,32 +1,37 @@
-# 继续 csk 发布的交接
+# csk 发布完成后的接续
 
-更新：2026-11-09。用户仅使用手机；不要再要求用户运行 Windows 脚本。不要要求在聊天中发送密码、Token 或验证码。
+更新：2026-11-09。用户仅使用手机；不要求用户运行 Windows 脚本，不索取密码、Token 或验证码。
 
-## 已授权范围
+## 已确认结果
 
-用户已审核第一阶段验收报告，要求不增加功能，继续现有 `feature/iphone-pwa`，发布到其自己的 GitHub `csk`，配置 Actions / Pages 并验证真实 HTTPS 资源。不要修改上游 `main`，不要推送到上游 `origin`。真实 iPhone 验收由用户亲自完成。
+- 账号：`skc649339-gif`。连接 API、CLI API 与用户确认一致，Google 登录邮箱与 GitHub 用户名的疑问已解决。
+- 仓库：https://github.com/skc649339-gif/csk 。官方 CLI 核实本人拥有 admin / push 等权限后创建空的公开仓库并推送。
+- 继续使用现有 `feature/iphone-pwa`，其同时是 csk 默认分支和 Pages 允许部署分支。
+- 真实站点：https://skc649339-gif.github.io/csk/ 。Pages 为 GitHub Actions 来源，HTTPS 强制开启。
+- 成功 Actions：https://github.com/skc649339-gif/csk/actions/runs/42583469729 。
+- 实际构建提交：`4085979420cd212362097f370179b9a1efbc74cd`；产物 ID `13657763755`；预缓存版本 `260b7801028e3f22e730`。
+- 云端类型检查、17/17 上游回归、3/3 本地回归、15/15 引擎保留、14 项 PWA 检查、构建与部署全部通过。
+- 用这次 Actions 的真实产物完成线上比较：73 项通过、0 失败，55 个核心资源 SHA256 全部匹配。
+- 桌面浏览器检查 **NOT_TESTED**：Computer Use 无法可靠确定 Windows 浏览器 URL，工具已停止，未绕过。
+- iPhone Safari 与主屏幕 App **NOT_TESTED**：由用户亲自验收，清单见 `DEPLOY_REPORT.md`。
 
-## 当前证据
+## 工作区和边界
 
-- 本地 checkout：`C:\Users\Administrator\Documents\Codex\2026-11-03\iphone-https-github-com-renhuai123-ziwei\app-source`。
-- 当前分支 `feature/iphone-pwa`；实现及部署准备在现有提交中，交接前最新提交为 `c0c376b`。
-- 用户截图显示手机 GitHub 已登录 `skc649339-gif`，但必须通过连接 API 再核实身份，不能直接将截图身份当作当前 API 身份。
-- 用户报告已连接 GitHub；插件目录查询确认 GitHub 插件 `installed: true`。当前对话工具目录尚无 GitHub 操作工具。新对话先发现工具并实际验证账号、仓库及写权限；如果只有只读能力，不可声称可以发布。
-- CLI `gh auth status --hostname github.com` 仍显示未登录。2026-11-09 请求官方设备码被执行环境网络访问限制阻止；未生成新码。旧码失效，不能继续使用。
-- 便携 CLI 在 checkout 的父目录 `.tools/gh/2.103.3/bin/gh.exe`；认证配置约定是父目录 `.local/github-cli`。它们均不在待发布 checkout 内。不要上传认证配置。
-- 未创建自己的远端仓库，未推送，未配置真实 Pages，尚无已验证 HTTPS 地址。先重新检查外部状态，防止用户或其他会话已创建仓库。
+- 当前可写发布副本：`C:\Users\Administrator\Documents\Codex\2026-11-09\csk-app-source-docs-deploy-evidence\app-source`。
+- 原 checkout：`C:\Users\Administrator\Documents\Codex\2026-11-03\iphone-https-github-com-renhuai123-ziwei\app-source`，未修改。
+- 保留上游 `origin=https://github.com/Renhuai123/ziwei-doushu.git`；自己的发布远端为 `csk=https://github.com/skc649339-gif/csk.git`。不要向上游 origin 推送，不修改上游 main。
+- 不增加 App 功能。应用源码与原始接续提交 `e7bea65` 保持一致；部署初始化仅增加空提交和现有工作流的一行说明，最终仅更新报告及证据。
+- 仅改 `DEPLOY_REPORT.md` 和 `docs/deploy-evidence/**` 不触发重复部署。
 
-## 接下来执行
+## 认证和实际产物
 
-1. 发现并使用已连接 GitHub 工具，核实实际账号以及建库/写入权限。不要重复要求连接，除非工具实际报告连接失效或缺少必要权限。
-2. 检查用户自己的 `csk` 是否存在；若非空或包含其他项目，先检查内容，不得覆盖或强推。保留原上游远端。
-3. 检查 `docs/deploy-evidence/privacy-audit.md` 以及本次待推送文件；禁止上传私人命盘、导出备份、凭据等。
-4. 创建/使用用户自己的 `csk`；推送 `feature/iphone-pwa`，启用 Pages 的 GitHub Actions 来源，确认环境规则允许该分支。
-5. `.github/workflows/deploy-pages.yml` 已配置分支 push 自动部署，按仓库名生成 `/csk`；报告与部署证据的单独修改不触发重复构建。无需重写工作流或增加 App 功能。
-6. 等待真实 Actions 成功，下载这次运行的 Pages artifact 到 checkout 外的目录并解包。旧本地 `out/` 的构建 ID 与云端不同，不能用于线上精确哈希比较。
-7. 运行 `node scripts/verify-deployment.mjs https://实际账号.github.io/csk/ 实际Actions产物目录`；检查真实页面、Manifest、SW、图标、JS/CSS、预缓存清单等，并作浏览器访问检查。
-8. 更新并提交 `DEPLOY_REPORT.md`，填写真实站点和 Actions URL、实际结果与未完成项。iPhone 实机清单保持待用户验收；不能将模拟或 HTTP 成功写成实机成功。
+- 手机官方 GitHub device flow 已真正完成，后台 CLI 返回成功后又通过 API 核验；不要继续使用或重发旧授权码。
+- CLI：原 checkout 父目录的 `.tools/gh/2.103.3/bin/gh.exe`。
+- 当前 `GH_CONFIG_DIR`：当前工作区根目录的 `.local/github-cli`，在 app-source 仓库外。不得上传、打印或复制认证配置。
+- 旧的前台等待进程曾在授权回执保存前结束；成功使用隐藏后台进程完成认证。以后先实际检查授权，不能把“用户已授权”直接写成 CLI 成功。
+- 本次实际产物在工作区根目录 `.local/actions-artifacts/42583469729/site`。不得拿旧的本地 out/ 与云端资源做精确哈希比较。
+- 完整结果见 `DEPLOY_REPORT.md` 以及当前目录的 JSON 证据。后续重部署必须核对新的 run、commit、artifact 与线上版本。
 
-## 如果新的连接仍不能发布
+## 接下来
 
-明确报告实际缺少的能力（例如只有读取权限、缺少仓库创建接口、CLI 网络仍受阻），不要把安装插件等同于 CLI 登录，不要让用户重复走无效授权流程，也不要虚构线上地址。需要更换托管平台时先让用户选择，不要自行改变已选 GitHub Pages 方案。
+发布及自动化资源验收已经完成。用户可在 iPhone Safari 打开上方真实地址并添加到主屏幕，按报告逐项检查。不得把 HTTP 成功、桌面浏览器或模拟器结果写成 iPhone 实机通过。

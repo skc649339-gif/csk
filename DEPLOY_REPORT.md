@@ -1,65 +1,82 @@
 # csk 线上部署报告
 
-日期：2026-11-09（Asia/Shanghai）。项目分支：`feature/iphone-pwa`。
+日期：2026-11-09（Asia/Shanghai）。发布分支：`feature/iphone-pwa`。
 
-## 当前状态
+## 发布结果
 
-**BLOCKED_MANUAL：GitHub 插件已安装，当前会话尚未载入其操作工具；CLI 设备码请求被执行环境阻止，尚未发布。**
+**DEPLOYED_VERIFIED：GitHub Pages 已成功部署，真实 HTTPS 资源核验通过。**
 
-用户通过手机操作，已报告完成 GitHub 连接；插件目录已实际确认 `installed: true`。这仅确认插件安装状态，尚未通过 GitHub API 核实连接账号或仓库写入权限。当前会话可用工具中没有 GitHub 操作工具，需要在同一项目新建对话载入插件后核实。交接见 `docs/deploy-evidence/CONTINUE_DEPLOYMENT.md`。
+- 站点：[紫微斗数](https://skc649339-gif.github.io/csk/)。
+- 仓库：[skc649339-gif/csk](https://github.com/skc649339-gif/csk)。
+- 成功运行：[Actions #42583469729](https://github.com/skc649339-gif/csk/actions/runs/42583469729)，2026-11-09 08:05:34–08:07:04 UTC。
+- 实际构建提交：`4085979420cd212362097f370179b9a1efbc74cd`。
+- Pages：`build_type=workflow`、HTTPS 强制开启；默认分支和 `github-pages` 允许部署分支均为 `feature/iphone-pwa`。
+- 实机验收：**NOT_TESTED，待用户在 iPhone Safari 和主屏幕 App 中亲自完成**。
 
-2026-11-09 再次运行 CLI：`gh auth status --hostname github.com` 显示未登录；官方设备码请求失败，错误为 `connectex: An attempt was made to access a socket in a way forbidden by its access permissions`。未生成新设备码。旧设备码已失效，不应重用。用户无需在手机运行 Windows 脚本。
+## 身份与权限
 
-真实 HTTPS 地址：**尚未取得**。目标是用户自己账号下的 `csk` 仓库。当前尚未确认 CLI 登录身份，因此未创建远端仓库、未推送代码、未启用 Pages。不会把预期格式的网址写成真实可访问地址。
+GitHub 连接 API 和官方 CLI API 均确认登录账号为 `skc649339-gif`（ID `347169544`）。用户核对其 Google 登录邮箱后确认了该账号。没有在项目或证据中保存该邮箱、一次性授权码、Token 或密码。
 
-## 已完成的发布准备
+初始连接能读取身份，但仓库列表和 App installations 为空，也不提供创建仓库或配置 Pages 的接口。因此使用官方 GitHub CLI 设备授权；用户仅在手机 GitHub 网页完成授权。后台 CLI 明确返回 `Authentication complete` 和登录用户名后，再通过 `gh api user` 验证身份。
 
-| 项目 | 结果 |
+本人账号下的目标查询最初返回 404。随后创建了空的公开 `csk` 仓库；CLI API 返回 `admin=true`、`maintain=true`、`push=true`、`pull=true`、`triage=true`，才执行推送。详见 [连接与权限证据](docs/deploy-evidence/github-connection-check.json)。
+
+## 源码与发布范围
+
+继续既有 `feature/iphone-pwa`，原始接续提交为 `e7bea65c1442845f7bf7c1aa62a7a00bcea72fbd`。在当前可写工作区克隆该分支和可达历史，原 checkout 未修改。保留上游 `origin=https://github.com/Renhuai123/ziwei-doushu.git`；所有推送只发往新增的 `csk` 远端，没有向上游推送或修改上游 `main`。
+
+工作流配置会过滤仅报告与证据的变更。首次推送和随后初始化空提交后，GitHub 工作流列表仍为空；在仅给现有工作流添加一行发布说明后，GitHub 登记工作流 `411829214` 并启动本次成功运行。应用源码、排盘引擎、依赖和功能没有改变。本次最终报告及部署证据单独提交，不触发重复构建。
+
+原隐私审计见 [privacy-audit.md](docs/deploy-evidence/privacy-audit.md)：该历史快照覆盖 69 个提交、346 个历史文件版本和 1137 个当时产物文件。当前发布前复查了审计基线后的变更；175 个源跟踪文件未发现敏感文件路径。本次认证配置、后台日志和下载产物位于仓库外的 `.local/`，未上传。构建只读取源码，不读取手机浏览器的 localStorage。
+
+## 云端检查
+
+| 检查 | 实际结果 |
 | --- | --- |
-| 现有开发分支 | 已确认 `feature/iphone-pwa`，继续使用原项目 |
-| GitHub CLI | 官方便携版 2.103.3，已按官方 SHA256 校验；放在项目仓库以外的本地工具目录 |
-| 原 Git 凭据 | 凭据助手已配置；当前隔离环境无法读取 Windows 凭据库，这不代表用户的其他浏览器或终端未登录 |
-| CLI 网页授权 | 当前未登录；重新请求设备码被执行环境网络限制阻止，不收取聊天中的密码或 Token |
-| GitHub 插件 | 已确认安装；用户报告已连接，当前会话未载入 GitHub 工具，连接身份及写入权限待实际核验 |
-| 仓库创建/推送权限 | 待 CLI 授权后实际核验；尚不能标记为已具备 |
-| 自动部署配置 | 已增加 `push` 到 `feature/iphone-pwa` 自动发布，并保留手动发布；只改报告或部署证据不会重复触发 |
-| 部署路径 | 工作流按仓库名生成 `/csk`；构建后 Manifest/SW/资源均使用该路径 |
-| 发布隐私审计 | 原源码、69个可达提交、346个历史文件版本和1137个已有生产文件中，未发现私人命盘、真实备份、真实凭据或私钥；详见 `docs/deploy-evidence/privacy-audit.md` |
-| 排盘引擎保留 | 本次重新检查15个核心文件，全部与原基线一致；未增加App功能 |
-| 线上资源验证工具 | `scripts/verify-deployment.mjs` 已准备，部署成功后会核验真实HTTPS路径、页面、Manifest、SW、图标和全部预缓存JS/CSS等资源的SHA256 |
+| 锁定依赖安装 | PASS |
+| 类型检查 | PASS |
+| 上游回归 | 17/17 suites PASS |
+| 本地功能回归 | 3/3 suites PASS |
+| 排盘引擎保留 | 15/15 文件与上游基线 `a600484a49255039d0725f1ba9e11ca81a948f97` 一致 |
+| 静态生产构建 | PASS |
+| PWA 单元及构建检查 | 14 PASS |
+| Pages 上传与部署 | build / deploy 两个 job 均 success |
 
-CLI 登录状态和本地工具目录位于 `app-source` 仓库外，不随该仓库上传。构建只从静态源码生成文件，不读取手机浏览器的 localStorage。公开资料仅含上游公开名人示例及合成测试样本。
+## 真实站点与云端产物核对
 
-## 授权后的发布步骤
+实际下载本次成功运行的 `github-pages` 产物 `13657763755`，在仓库外解包。该产物有 1134 个文件，核心预缓存 55 项，版本 `260b7801028e3f22e730`。未使用旧的本地产物代替云端构建。
 
-1. 用 GitHub API 核实当前账号，在该账号下检查/创建 `csk`，不改动同名已有仓库内容。
-2. 将当前 `feature/iphone-pwa` 推到自己的 `csk`，保留上游 `origin` 与原 `main`。
-3. 配置 Pages 来源为 GitHub Actions、默认分支及允许部署的分支，启用 HTTPS。
-4. 等待 Actions 的构建与部署成功，记录运行链接、提交和真实 Pages URL。
-5. 对真实 `/csk/` 网站执行 HTTP 与浏览器加载检查，记录结果后更新本报告。
+对实际 HTTPS 地址运行既有 `scripts/verify-deployment.mjs`，于 **2026-11-09 08:09:35 UTC** 完成：**73 项资源检查通过、0 失败；55 个核心资源 SHA256 全部匹配**。
 
-## iPhone 安装说明（线上地址取得后执行）
+覆盖首页、排盘、资料库、搜索、知识、合命、隐私与条款页面；Manifest 的名称、standalone、id/start_url/scope `/csk/`；应用图标尺寸及 180×180 Apple 图标；SW 与本次产物及模板一致；预缓存清单、全部核心 JS/CSS/静态资源，以及许可证文件。
 
-1. 用 iPhone **Safari** 打开报告顶部确认过的真实 HTTPS 地址。
-2. 点 **分享 → 添加到主屏幕 → 添加**，名称为「紫微斗数」。如有「作为网页 App 打开」选项，请开启。
+证据：[live-resources.json](docs/deploy-evidence/live-resources.json)、[actions-artifact.json](docs/deploy-evidence/actions-artifact.json)、[actions-run.json](docs/deploy-evidence/actions-run.json)。
+
+## 浏览器与实机限制
+
+- **桌面浏览器：NOT_TESTED。** 已尝试使用 Computer Use 做真实页面访问检查。工具因无法可靠确定 Windows 当前浏览器 URL 而停止操作；未绕过该保护，也未将这次尝试记录为浏览器通过。
+- **iPhone Safari / 主屏幕 App：NOT_TESTED。** HTTP、资源哈希和云端测试不替代用户亲自进行的设备验收。
+
+## iPhone 安装
+
+1. 在 iPhone **Safari** 打开 [https://skc649339-gif.github.io/csk/](https://skc649339-gif.github.io/csk/)。
+2. 点 **分享 → 添加到主屏幕 → 添加**，名称为「紫微斗数」。如显示「作为网页 App 打开」，请开启。
 3. 从主屏幕图标打开，保持联网，等页面显示「核心已缓存」。
 
-## 由用户亲自完成的实机清单
+## 用户亲自完成的实机清单
 
-以下全部**待实机验收**；自动化HTTP/Chromium检查不等于通过。
+以下全部待实机验收。请自行记录 iPhone 型号、iOS 版本、日期及各项结果；真实出生资料无需发到聊天或 GitHub。
 
-- [ ] Safari 打开真实HTTPS页面，无空白、404或资源错误。
+- [ ] Safari 打开真实 HTTPS 页面，无空白、404 或资源错误。
 - [ ] 添加到主屏幕，图标和名称正确。
-- [ ] 点主屏幕图标进入独立窗口，没有Safari地址栏。
-- [ ] 用自己的资料核对公历/农历输入、出生地、时分与性别；起盘结果符合预期。
-- [ ] 点十二宫和主星可查看详细信息，大限/流年可切换。
+- [ ] 从主屏幕图标进入独立窗口，没有 Safari 地址栏。
+- [ ] 核对公历/农历输入、出生地、时分与性别，起盘结果符合预期。
+- [ ] 十二宫及主星详情、大限和流年切换正常。
 - [ ] 保存至少两份命盘，记录数量正确。
-- [ ] 从多任务界面关闭App，再打开，记录仍可读。
-- [ ] 切换浅/深色，关闭重开后主题保持。
-- [ ] 等核心缓存完成后开启飞行模式，关闭重开，已存盘可读。
-- [ ] 飞行模式下新排盘并保存，重新打开后仍在。
+- [ ] 从多任务界面关闭 App 再打开，记录仍可读。
+- [ ] 浅/深色主题在关闭重开后保持。
+- [ ] 核心缓存完成后开启飞行模式，关闭重开，已存盘可读。
+- [ ] 飞行模式下新排盘并保存，重开后仍在。
 - [ ] 删除其中一份命盘，重开后其他记录保持。
-- [ ] 导出JSON备份到「文件」，再导入并核对追加行为。
-- [ ] 横竖屏、软键盘、宫位横向滑动与触控均正常。
-
-请自行记录iPhone型号、iOS版本、日期及每项结果；真实出生资料无需发到聊天或GitHub。
+- [ ] 导出 JSON 备份到「文件」，再导入并核对追加行为。
+- [ ] 横竖屏、软键盘、宫位滑动与触控正常。

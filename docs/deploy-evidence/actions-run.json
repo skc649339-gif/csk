@@ -1,0 +1,46 @@
+{
+  "repository": "skc649339-gif/csk",
+  "runId": 42583469729,
+  "runUrl": "https://github.com/skc649339-gif/csk/actions/runs/42583469729",
+  "headSha": "4085979420cd212362097f370179b9a1efbc74cd",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "createdAt": "2026-11-09T08:05:34Z",
+  "updatedAt": "2026-11-09T08:07:04Z",
+  "jobs": [
+    {
+      "id": 129047523905,
+      "name": "build",
+      "conclusion": "success"
+    },
+    {
+      "id": 129047986486,
+      "name": "deploy",
+      "conclusion": "success"
+    }
+  ],
+  "validation": {
+    "typecheck": "PASS",
+    "upstreamSuites": {
+      "passed": 17,
+      "total": 17
+    },
+    "localSuites": {
+      "passed": 3,
+      "total": 3
+    },
+    "enginePreservedFiles": {
+      "passed": 15,
+      "total": 15,
+      "baseline": "a600484a49255039d0725f1ba9e11ca81a948f97"
+    },
+    "pwaChecksPassed": 14,
+    "build": "PASS"
+  },
+  "browser": {
+    "status": "NOT_TESTED",
+    "reason": "Computer Use stopped because it could not determine the current browser URL on Windows with enough confidence to enforce policy"
+  },
+  "realIphoneAcceptance": "NOT_TESTED"
+}

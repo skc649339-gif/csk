@@ -1,0 +1,628 @@
+{
+  "url": "https://skc649339-gif.github.io/csk/",
+  "checkedAt": "2026-11-09T08:09:35.758Z",
+  "results": [
+    {
+      "path": "/csk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30241,
+      "passed": true
+    },
+    {
+      "path": "/csk/chart/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30762,
+      "passed": true
+    },
+    {
+      "path": "/csk/library/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23245,
+      "passed": true
+    },
+    {
+      "path": "/csk/library/search/?q=%E7%B4%AB%E5%BE%AE",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 9655,
+      "passed": true
+    },
+    {
+      "path": "/csk/knowledge/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 29376,
+      "passed": true
+    },
+    {
+      "path": "/csk/heming/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 50675,
+      "passed": true
+    },
+    {
+      "path": "/csk/privacy/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 12437,
+      "passed": true
+    },
+    {
+      "path": "/csk/terms/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 12740,
+      "passed": true
+    },
+    {
+      "path": "/csk/manifest.webmanifest",
+      "status": 200,
+      "contentType": "application/manifest+json; charset=utf-8",
+      "bytes": 745,
+      "passed": true
+    },
+    {
+      "path": "/csk/icons/icon-192.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 3214,
+      "passed": true
+    },
+    {
+      "path": "/csk/icons/icon-512.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 12615,
+      "passed": true
+    },
+    {
+      "path": "/csk/icons/maskable-512.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 12615,
+      "passed": true
+    },
+    {
+      "path": "/csk/icons/apple-touch-icon.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 3052,
+      "passed": true
+    },
+    {
+      "path": "/csk/sw.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 12390,
+      "passed": true,
+      "sha256": "114de8aec260e6926851aab5c742656cbb1b6a3beffad70bf038e288dbaebe80",
+      "expectedSha256": "114de8aec260e6926851aab5c742656cbb1b6a3beffad70bf038e288dbaebe80"
+    },
+    {
+      "path": "/csk/precache-manifest.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 10216,
+      "passed": true
+    },
+    {
+      "path": "/csk/__next.__PAGE__.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 4783,
+      "passed": true,
+      "sha256": "66a329950d81095289785f0b9f2b1a33ee746cc44c032124fa3e3e58b76a1d70",
+      "expectedSha256": "66a329950d81095289785f0b9f2b1a33ee746cc44c032124fa3e3e58b76a1d70"
+    },
+    {
+      "path": "/csk/__next._full.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 5147,
+      "passed": true,
+      "sha256": "e6e5fa6d75018de896179b269c5a0f85f3520a0b956b0d5c254dbe6d6b06969e",
+      "expectedSha256": "e6e5fa6d75018de896179b269c5a0f85f3520a0b956b0d5c254dbe6d6b06969e"
+    },
+    {
+      "path": "/csk/_next/static/1yBhtg9-TT8zT9R5SuZkf/_buildManifest.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 902,
+      "passed": true,
+      "sha256": "a041df30a68273d216d7ba4d6aff273857349a9026bf74621aeb1cbe7e3399e9",
+      "expectedSha256": "a041df30a68273d216d7ba4d6aff273857349a9026bf74621aeb1cbe7e3399e9"
+    },
+    {
+      "path": "/csk/__next._tree.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 168,
+      "passed": true,
+      "sha256": "ebd7731bf47e0ce53be3e7dfc31311afea250f0cc784d288aec230c8e7838d8d",
+      "expectedSha256": "ebd7731bf47e0ce53be3e7dfc31311afea250f0cc784d288aec230c8e7838d8d"
+    },
+    {
+      "path": "/csk/_next/static/1yBhtg9-TT8zT9R5SuZkf/_ssgManifest.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 193,
+      "passed": true,
+      "sha256": "dd680860bc43602d6fdf211d7b4066e406eb3214e8b7883de8b5a66a6a9f7626",
+      "expectedSha256": "dd680860bc43602d6fdf211d7b4066e406eb3214e8b7883de8b5a66a6a9f7626"
+    },
+    {
+      "path": "/csk/_next/static/chunks/318-bfb78d0a7fe8918e.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 170558,
+      "passed": true,
+      "sha256": "a6fe7d10495e9c7969a7d5d20f1f7bc482051ed99281fbe6f87cb30e89de2b7b",
+      "expectedSha256": "a6fe7d10495e9c7969a7d5d20f1f7bc482051ed99281fbe6f87cb30e89de2b7b"
+    },
+    {
+      "path": "/csk/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 7642,
+      "passed": true,
+      "sha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d",
+      "expectedSha256": "905bc34977bb55dd8fda0041a3dbe144347dc46e9cd747d71e6b326deb234d7d"
+    },
+    {
+      "path": "/csk/_next/static/chunks/428ccf76-2ca7a5840fb136b5.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 306425,
+      "passed": true,
+      "sha256": "6363cdbe8be93baa68d3b2a2bf123097652edb55bcd82e2cb6d4cdfc732ba0dd",
+      "expectedSha256": "6363cdbe8be93baa68d3b2a2bf123097652edb55bcd82e2cb6d4cdfc732ba0dd"
+    },
+    {
+      "path": "/csk/_next/static/chunks/772-0747fdb57d3e1357.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 104160,
+      "passed": true,
+      "sha256": "28b14911dcce71ee177499a6513c3d5ed75d957f91215dd224997d8ab815b75e",
+      "expectedSha256": "28b14911dcce71ee177499a6513c3d5ed75d957f91215dd224997d8ab815b75e"
+    },
+    {
+      "path": "/csk/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 203721,
+      "passed": true,
+      "sha256": "7d5ccf185a6f85ab38ce400a7f10aa0a3496eb4e9aee1e500a85e01c4222fcec",
+      "expectedSha256": "7d5ccf185a6f85ab38ce400a7f10aa0a3496eb4e9aee1e500a85e01c4222fcec"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/_global-error/page-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/983-77c62c42fae11823.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 41923,
+      "passed": true,
+      "sha256": "a4f10ff006b1d2996f79429f33a4e5f4651b0cda6799940fb5a708211a2b2271",
+      "expectedSha256": "a4f10ff006b1d2996f79429f33a4e5f4651b0cda6799940fb5a708211a2b2271"
+    },
+    {
+      "path": "/csk/_next/static/chunks/794-cc1b955fe20436de.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 243190,
+      "passed": true,
+      "sha256": "90930e9a2af59f8ab628ac01e9b1708b461de78437b9a03876d1f5abcd429580",
+      "expectedSha256": "90930e9a2af59f8ab628ac01e9b1708b461de78437b9a03876d1f5abcd429580"
+    },
+    {
+      "path": "/csk/_next/static/chunks/862-80d995b78c5c123f.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 111635,
+      "passed": true,
+      "sha256": "fc48714a77ad17fec318748e0aaad4052494e009a038a79c5d7f575bbcffeede",
+      "expectedSha256": "fc48714a77ad17fec318748e0aaad4052494e009a038a79c5d7f575bbcffeede"
+    },
+    {
+      "path": "/csk/_next/static/chunks/9ca3580a-c2e809e400d8aea3.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 302538,
+      "passed": true,
+      "sha256": "8e5b1a3f8512b7e17bc295c4211740dbb2cdbf1f8dae148a3a763cb56bf2dd61",
+      "expectedSha256": "8e5b1a3f8512b7e17bc295c4211740dbb2cdbf1f8dae148a3a763cb56bf2dd61"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/chart/page-e6b001564bd02825.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6af7297e373087270631454f01f4250c4692def51b9ce9c7703565d6d115e4b5",
+      "expectedSha256": "6af7297e373087270631454f01f4250c4692def51b9ce9c7703565d6d115e4b5"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/_not-found/page-da4f97ec5a657ddc.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 2667,
+      "passed": true,
+      "sha256": "6f7e7f5a24b8b940c34b0b2899a4d0dd2741ec55ad2976b9f96cd14c8c37218c",
+      "expectedSha256": "6f7e7f5a24b8b940c34b0b2899a4d0dd2741ec55ad2976b9f96cd14c8c37218c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/knowledge/page-31d1876eca633fa8.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660",
+      "expectedSha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/knowledge/[star]/[topic]/page-31d1876eca633fa8.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660",
+      "expectedSha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/heming/page-a1f34a7f34e0efc3.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 17047,
+      "passed": true,
+      "sha256": "17a8b4e2241bdac866a24e67625ed5a80154ca3de792ca68ce90e1b25c6f89db",
+      "expectedSha256": "17a8b4e2241bdac866a24e67625ed5a80154ca3de792ca68ce90e1b25c6f89db"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/library/[book]/[chapter]/page-31d1876eca633fa8.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660",
+      "expectedSha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/layout-3f835409c3e73631.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 4876,
+      "passed": true,
+      "sha256": "2e3fb8941248dd918d8f8f0d12e4955c62bacbcc0f2a654fd3e801d03ab3e14a",
+      "expectedSha256": "2e3fb8941248dd918d8f8f0d12e4955c62bacbcc0f2a654fd3e801d03ab3e14a"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/library/[book]/page-31d1876eca633fa8.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660",
+      "expectedSha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/library/page-7d9ad40afbc25709.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 1534,
+      "passed": true,
+      "sha256": "6a626fb83f0ba79fbbe19ed7e70d1dab753846c116e6d25165d35f95f7b1805f",
+      "expectedSha256": "6a626fb83f0ba79fbbe19ed7e70d1dab753846c116e6d25165d35f95f7b1805f"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/library/search/page-60b447a5ecb89e29.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 20693,
+      "passed": true,
+      "sha256": "c07a4aa116fe148f66822d5706dbfc632eb9fdc028fa92537054750087210b8a",
+      "expectedSha256": "c07a4aa116fe148f66822d5706dbfc632eb9fdc028fa92537054750087210b8a"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/page-c5d9235eeef80073.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "f255e53f50fce6cace7ff186ffa230be0b158b0f93cbb7c55127c7eca3a94f2f",
+      "expectedSha256": "f255e53f50fce6cace7ff186ffa230be0b158b0f93cbb7c55127c7eca3a94f2f"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/robots.txt/route-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/privacy/page-31d1876eca633fa8.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660",
+      "expectedSha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/sitemap.xml/route-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/preview/page-0bc45d967cd4b0c7.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 11258,
+      "passed": true,
+      "sha256": "6fef69fe27ab0694d13a0c59270d36f6a194ce5fc9017bd5dc342d5e612c57c4",
+      "expectedSha256": "6fef69fe27ab0694d13a0c59270d36f6a194ce5fc9017bd5dc342d5e612c57c4"
+    },
+    {
+      "path": "/csk/_next/static/chunks/next/dist/client/components/builtin/app-error-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/app/terms/page-31d1876eca633fa8.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 201,
+      "passed": true,
+      "sha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660",
+      "expectedSha256": "6cff4be25cc83145838ab62dcbb75bc9c85cf5cb8a4c57e711fe3792e8b16660"
+    },
+    {
+      "path": "/csk/_next/static/chunks/main-app-9a49bf5a893d9b47.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 511,
+      "passed": true,
+      "sha256": "51724b633c6601a45899956b3aa6f5726edccc3e273639d25484ab5c16412a5b",
+      "expectedSha256": "51724b633c6601a45899956b3aa6f5726edccc3e273639d25484ab5c16412a5b"
+    },
+    {
+      "path": "/csk/_next/static/chunks/main-f58fc453ace7543d.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 137528,
+      "passed": true,
+      "sha256": "e814df9f5eb29d20f1308b696c2203e9a7225e13927f3c341abff8ece1fa467d",
+      "expectedSha256": "e814df9f5eb29d20f1308b696c2203e9a7225e13927f3c341abff8ece1fa467d"
+    },
+    {
+      "path": "/csk/_next/static/chunks/framework-6cf1e6a62a0e875a.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 218916,
+      "passed": true,
+      "sha256": "c18de6c19b42b42f8bdebf71a0657888820d0310f8bbe628acf9a9cd3eda5eda",
+      "expectedSha256": "c18de6c19b42b42f8bdebf71a0657888820d0310f8bbe628acf9a9cd3eda5eda"
+    },
+    {
+      "path": "/csk/_next/static/chunks/next/dist/client/components/builtin/global-error-c05772631d7e7512.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 179,
+      "passed": true,
+      "sha256": "628410d4538e81c6605a7eee4b49915678aed342cf6db9cbd79f2a6420d210e3",
+      "expectedSha256": "628410d4538e81c6605a7eee4b49915678aed342cf6db9cbd79f2a6420d210e3"
+    },
+    {
+      "path": "/csk/_next/static/chunks/next/dist/client/components/builtin/not-found-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/next/dist/client/components/builtin/unauthorized-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/next/dist/client/components/builtin/forbidden-c072684033e39d66.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 155,
+      "passed": true,
+      "sha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c",
+      "expectedSha256": "aa84125be341e28f0b95677601d5d14a6f8282b1cdda7b124b4fb8311bd38f6c"
+    },
+    {
+      "path": "/csk/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 112594,
+      "passed": true,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "expectedSha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+    },
+    {
+      "path": "/csk/_next/static/chunks/webpack-3aa973e6f22c70c1.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 3345,
+      "passed": true,
+      "sha256": "4453c19e3cef268948e0a836ddfecf1069a24ffd57356f8e1c4d2eed1d4c7846",
+      "expectedSha256": "4453c19e3cef268948e0a836ddfecf1069a24ffd57356f8e1c4d2eed1d4c7846"
+    },
+    {
+      "path": "/csk/chart/__next._tree.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 216,
+      "passed": true,
+      "sha256": "fcd1022f28c250b38b40e2d41c8976a7e431f66e60d621474c0dd51eec5e4294",
+      "expectedSha256": "fcd1022f28c250b38b40e2d41c8976a7e431f66e60d621474c0dd51eec5e4294"
+    },
+    {
+      "path": "/csk/chart/__next._full.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 5581,
+      "passed": true,
+      "sha256": "16ebba9f58b95acae551766e83b552debd5b5aab706ffb7a1045821b6b214606",
+      "expectedSha256": "16ebba9f58b95acae551766e83b552debd5b5aab706ffb7a1045821b6b214606"
+    },
+    {
+      "path": "/csk/chart/__next.chart.__PAGE__.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 5020,
+      "passed": true,
+      "sha256": "536cd3ba8fe939e1ac8fee4f698a389b32a5fe32322ced6f362b0ad90ac6058d",
+      "expectedSha256": "536cd3ba8fe939e1ac8fee4f698a389b32a5fe32322ced6f362b0ad90ac6058d"
+    },
+    {
+      "path": "/csk/_next/static/css/12616b8b2c8f545b.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 32438,
+      "passed": true,
+      "sha256": "06fb793bafe7f6f7b597bc0a076f720726c26940d8acc6713f9be0341fd2e10c",
+      "expectedSha256": "06fb793bafe7f6f7b597bc0a076f720726c26940d8acc6713f9be0341fd2e10c"
+    },
+    {
+      "path": "/csk/chart/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30762,
+      "passed": true,
+      "sha256": "6c17dcb06154a427fe98ce07c2225211a929872881f01480171c58fb610f4c62",
+      "expectedSha256": "6c17dcb06154a427fe98ce07c2225211a929872881f01480171c58fb610f4c62"
+    },
+    {
+      "path": "/csk/icons/icon-192.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 3214,
+      "passed": true,
+      "sha256": "38b14c3e9842440bef5e28b8899faeb387dc4849bcf72c1ea070cd8e175951d0",
+      "expectedSha256": "38b14c3e9842440bef5e28b8899faeb387dc4849bcf72c1ea070cd8e175951d0"
+    },
+    {
+      "path": "/csk/icons/icon-512.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 12615,
+      "passed": true,
+      "sha256": "c4821e88253513961513a87d98d7a7375bc123d7ef8e241d6ace928f23edb52f",
+      "expectedSha256": "c4821e88253513961513a87d98d7a7375bc123d7ef8e241d6ace928f23edb52f"
+    },
+    {
+      "path": "/csk/icons/apple-touch-icon.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 3052,
+      "passed": true,
+      "sha256": "123f8d0e31b9605f47967b24159f0c832bc6829df391ae5f68006b29cbcaaabc",
+      "expectedSha256": "123f8d0e31b9605f47967b24159f0c832bc6829df391ae5f68006b29cbcaaabc"
+    },
+    {
+      "path": "/csk/chart/index.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 5581,
+      "passed": true,
+      "sha256": "16ebba9f58b95acae551766e83b552debd5b5aab706ffb7a1045821b6b214606",
+      "expectedSha256": "16ebba9f58b95acae551766e83b552debd5b5aab706ffb7a1045821b6b214606"
+    },
+    {
+      "path": "/csk/manifest.webmanifest",
+      "status": 200,
+      "contentType": "application/manifest+json; charset=utf-8",
+      "bytes": 745,
+      "passed": true,
+      "sha256": "a0a3ac93881330d228c85bab93a9a22c8550223cf9be5bcb93f00466faf27751",
+      "expectedSha256": "a0a3ac93881330d228c85bab93a9a22c8550223cf9be5bcb93f00466faf27751"
+    },
+    {
+      "path": "/csk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30241,
+      "passed": true,
+      "sha256": "0c69e074f388215c7c841b1479c2198c9d3713004f492322bca70820f9f841a1",
+      "expectedSha256": "0c69e074f388215c7c841b1479c2198c9d3713004f492322bca70820f9f841a1"
+    },
+    {
+      "path": "/csk/icons/maskable-512.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 12615,
+      "passed": true,
+      "sha256": "c4821e88253513961513a87d98d7a7375bc123d7ef8e241d6ace928f23edb52f",
+      "expectedSha256": "c4821e88253513961513a87d98d7a7375bc123d7ef8e241d6ace928f23edb52f"
+    },
+    {
+      "path": "/csk/icons/icon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 639,
+      "passed": true,
+      "sha256": "ef60411e22c14f88b4e06dfa2c77b7ff22afd8d22a178321620eedf2090e5ce3",
+      "expectedSha256": "ef60411e22c14f88b4e06dfa2c77b7ff22afd8d22a178321620eedf2090e5ce3"
+    },
+    {
+      "path": "/csk/index.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 5147,
+      "passed": true,
+      "sha256": "e6e5fa6d75018de896179b269c5a0f85f3520a0b956b0d5c254dbe6d6b06969e",
+      "expectedSha256": "e6e5fa6d75018de896179b269c5a0f85f3520a0b956b0d5c254dbe6d6b06969e"
+    },
+    {
+      "path": "/csk/LICENSE.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 1069,
+      "passed": true
+    },
+    {
+      "path": "/csk/THIRD_PARTY_NOTICES.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 380693,
+      "passed": true
+    },
+    {
+      "check": "Manifest standalone, icon dimensions and Service Worker scope",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "passed": true
+}

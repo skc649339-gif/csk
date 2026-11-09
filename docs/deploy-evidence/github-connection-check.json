@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-11-09T08:09:35.758Z",
+  "authenticatedLogin": "skc649339-gif",
+  "authenticatedUserId": 347169544,
+  "targetRepository": "skc649339-gif/csk",
+  "targetAccountStatus": "User confirmed the connected account after checking their Google login email",
+  "initialConnectorCheck": {
+    "installed": true,
+    "identityVerified": true,
+    "accessibleRepositories": [],
+    "installations": [],
+    "installedAccounts": [],
+    "targetRepositoryHttpStatus": 404,
+    "collaboratorPermission": null,
+    "repositoryCreationToolAvailable": false,
+    "pagesConfigurationToolAvailable": false
+  },
+  "cli": {
+    "authenticated": true,
+    "actualApiLogin": "skc649339-gif",
+    "authenticationMethod": "Official GitHub CLI web device authorization completed on the user's phone",
+    "credentialConfigurationOutsideRepository": true,
+    "repositoryPermissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    }
+  },
+  "publication": {
+    "branch": "feature/iphone-pwa",
+    "originalSourceCommit": "e7bea65c1442845f7bf7c1aa62a7a00bcea72fbd",
+    "buildCommit": "4085979420cd212362097f370179b9a1efbc74cd",
+    "repositoryCreated": true,
+    "repositoryUrl": "https://github.com/skc649339-gif/csk",
+    "repositoryVisibility": "public",
+    "pushed": true,
+    "defaultBranch": "feature/iphone-pwa",
+    "pagesEnabled": true,
+    "pagesBuildType": "workflow",
+    "httpsEnforced": true,
+    "allowedDeploymentBranch": "feature/iphone-pwa",
+    "actionsEnabled": true,
+    "workflowId": 411829214,
+    "workflowRunId": 42583469729,
+    "workflowRunUrl": "https://github.com/skc649339-gif/csk/actions/runs/42583469729",
+    "workflowStatus": "completed",
+    "configuredPagesUrl": "https://skc649339-gif.github.io/csk/",
+    "verifiedLiveUrl": "https://skc649339-gif.github.io/csk/",
+    "realIphoneAcceptance": "NOT_TESTED",
+    "workflowConclusion": "success",
+    "liveResourceChecksPassed": 73,
+    "liveResourceChecksFailed": 0,
+    "verifiedCoreResourceHashes": 55,
+    "precacheVersion": "260b7801028e3f22e730",
+    "artifactId": 13657763755,
+    "desktopBrowserAcceptance": "NOT_TESTED",
+    "desktopBrowserLimitation": "Computer Use could not determine the current browser URL on Windows with enough confidence to enforce policy"
+  },
+  "notes": [
+    "Initial connector access did not establish write permissions; the later authenticated CLI API confirmed them.",
+    "The original upstream origin remains Renhuai123/ziwei-doushu; pushes use only the separate csk remote.",
+    "The deployment initialization added an empty commit and one workflow comment; application files are unchanged.",
+    "No credentials, device codes or Google email addresses are included in this evidence."
+  ]
+}
