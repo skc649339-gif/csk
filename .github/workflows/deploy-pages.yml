@@ -1,4 +1,5 @@
 name: Deploy iPhone PWA to GitHub Pages
+# Publish the existing iPhone PWA at the csk repository's Pages URL.
 
 on:
   push:
