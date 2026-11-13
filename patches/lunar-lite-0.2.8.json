@@ -1,0 +1,9 @@
+{
+  "package": "lunar-lite",
+  "version": "0.2.8",
+  "file": "lib/convertor.js",
+  "beforeSha256": "d3a9bc09fea94f308cefdd52439b36669851a893474dce1a8cc881b11bfb8837",
+  "afterSha256": "52683ae3e8c7d23bdfd08fcd4d6c65cd52ac94a1a8882068059c9558deafa545",
+  "before": "    var lunar = lunar_typescript_1.Lunar.fromYmd(year, month, day);\n    var lunarYear = lunar_typescript_1.LunarYear.fromYear(lunar.getYear());\n    var leapMonth = lunarYear.getLeapMonth();\n    if (leapMonth > 0 && leapMonth === month && isLeapMonth) {\n        lunar = lunar_typescript_1.Lunar.fromYmd(year, 0 - month, day);\n    }\n",
+  "after": "    var lunarYear = lunar_typescript_1.LunarYear.fromYear(year);\n    var leapMonth = lunarYear.getLeapMonth();\n    var lunar = lunar_typescript_1.Lunar.fromYmd(year, leapMonth > 0 && leapMonth === month && isLeapMonth ? 0 - month : month, day);\n"
+}

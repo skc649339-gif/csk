@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CSK 命盘备份恢复</title>
+<style>body{max-width:40rem;margin:2rem auto;padding:0 1rem;font:1rem/1.7 system-ui;color:#222}button{font:inherit;padding:.6rem}li{margin:.75rem 0}</style>
+<script src="./recover-records.js" defer></script>
+<main>
+  <h1>CSK 命盘备份恢复</h1>
+  <p>排盘页面打不开时，可以在当前浏览器或主屏幕 App 导出原始命盘数据。下载只读取这台设备的存储。</p>
+  <ul>
+    <li><button data-version="1" type="button">导出旧版原始数据</button></li>
+    <li><button data-version="2" type="button">导出新版原始数据</button></li>
+  </ul>
+  <p>原始文件包含命盘资料，请保存在自己的“文件”中。新版原始文件用于恢复排查。正常情况下请从命盘页导出可直接导入的统一备份。</p>
+  <p role="status" id="result"></p>
+  <p><a href="./">返回命盘</a></p>
+</main>
+</html>

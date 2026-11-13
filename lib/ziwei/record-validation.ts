@@ -1,6 +1,7 @@
 import type { BirthInfo, ZiweiChart } from './types';
 import type { SavedRecord } from './records';
 import { isSupportedSolarDate, SOLAR_INPUT_MIN, SOLAR_INPUT_MAX } from './date-range';
+import { isValidSnapshotLunarDate } from './snapshot-lunar-date';
 
 function fail(path: string, reason: string): never {
   throw new Error(`命盘数据校验失败：${path}${reason}；原数据已保留`);
@@ -107,6 +108,9 @@ export function validateChart(value: unknown, path: string): asserts value is Zi
   if (lunar.lunarMonth === 0) fail(lp, '农历月份不能为零');
   integer(lunar.lunarDay, 1, 30, `${lp}.lunarDay`); stem(lunar.yearStem, `${lp}.yearStem`);
   branch(lunar.yearBranch, `${lp}.yearBranch`); boolean(lunar.isLeapMonth, `${lp}.isLeapMonth`);
+  if (!isValidSnapshotLunarDate(lunar.lunarYear as number, lunar.lunarMonth as number, lunar.lunarDay as number, lunar.isLeapMonth as boolean)) {
+    fail(lp, '日期不存在，请检查该年月份、闰月标记和实际天数');
+  }
   optional(lunar, 'fourPillars', pillars, lp); optional(lunar, 'fourPillarsLunar', pillars, lp);
   for (const key of ['mingGongBranch', 'shenGongBranch', 'ziweiPos']) branch(value[key], `${path}.${key}`);
   integer(value.wuxingJu, 2, 6, `${path}.wuxingJu`); text(value.wuxingJuName, `${path}.wuxingJuName`);

@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 const upstream = ['pan-integrity', 'dst-cn', 'clock-adjust', 'sizhu-lichun-boundary', 'hongluan-tianxi', 'famous-hour-consistency', 'iztro-time-index-boundary', 'solar-date-exists', 'gender-validation', 'natal-dual-sihua-same-palace', 'neutral-naming', 'leap-policy-validation', 'form-true-solar-day', 'birthform-birthinfo-consistency', 'heming-refresh', 'heming-stream', 'patterns-sihua-bonus'].map(name => `${name}.test.ts`);
-const local = ['records.test.ts', 'records-schema.test.ts', 'calendar-input.test.ts', 'date-boundary.test.ts', 'navigation.test.tsx'];
+const local = ['lunar-lite-fix.test.mjs', 'records.test.ts', 'records-schema.test.ts', 'records-commit.test.ts', 'snapshot-lunar.test.ts', 'release-safety.test.mjs', 'calendar-input.test.ts', 'date-boundary.test.ts', 'navigation.test.tsx', 'reading.test.ts'];
 const kind = process.argv[2] || 'upstream';
 if (!['upstream', 'local'].includes(kind)) throw new Error('Choose upstream or local');
 const results = [];

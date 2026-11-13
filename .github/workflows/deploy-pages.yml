@@ -1,19 +1,20 @@
-name: Deploy iPhone PWA to GitHub Pages
-# Publish the existing iPhone PWA at the csk repository's Pages URL.
+name: Publish reviewed CSK build to GitHub Pages
+# Manual production publication only. See docs/DEPLOYMENT_SAFETY_ROUND4.md.
 
 on:
-  push:
-    branches:
-      - feature/iphone-pwa
-    paths-ignore:
-      - DEPLOY_REPORT.md
-      - docs/deploy-evidence/**
   workflow_dispatch:
+    inputs:
+      confirmation:
+        description: '输入 PUBLISH_CSK，确认本次操作将覆盖生产网站'
+        required: true
+        type: string
+      expected_sha:
+        description: '粘贴已独立审核、已提交的完整 40 位 Git SHA'
+        required: true
+        type: string
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -21,6 +22,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'skc649339-gif/csk' && github.ref == 'refs/heads/feature/iphone-pwa'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +30,11 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - name: Verify explicit release approval and exact checkout
+        env:
+          CSK_RELEASE_CONFIRMATION: ${{ inputs.confirmation }}
+          CSK_EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: node scripts/check-release.mjs
       - name: Derive Pages base path
         shell: bash
         run: |
@@ -47,17 +54,23 @@ jobs:
       - run: npm run test:engine
       - run: npm run build
       - run: npm run test:pwa
-      - uses: actions/configure-pages@v5
+      - run: npm audit --registry=https://registry.npmjs.org --audit-level=high
       - uses: actions/upload-pages-artifact@v4
         with:
           path: out
   deploy:
     needs: build
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'skc649339-gif/csk' && github.ref == 'refs/heads/feature/iphone-pwa'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy
+      - uses: actions/configure-pages@v5
+      - name: Deploy reviewed artifact
         id: deployment
         uses: actions/deploy-pages@v4

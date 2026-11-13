@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "node scripts/apply-lunar-lite-fix.mjs",
     "dev": "next dev",
     "build": "next build --webpack && node scripts/build-pwa.mjs",
     "start": "node scripts/serve-static.mjs",
@@ -10,6 +11,8 @@
     "test:local": "node scripts/run-tests.mjs local",
     "typecheck": "next typegen && tsc --noEmit",
     "test:engine": "node scripts/check-engine.mjs",
+    "test:reading": "node node_modules/tsx/dist/cli.mjs scripts/regression/reading.test.ts",
+    "test:records-lock": "node scripts/regression/records-coordination.e2e.mjs",
     "test": "node scripts/run-tests.mjs upstream"
   },
   "dependencies": {

@@ -31,7 +31,8 @@ export async function createPrecache(directory, basePath = '') {
   // are preloaded; successfully visited reference pages are cached at runtime.
   const selected = files.filter(file =>
     file.startsWith('_next/static/') || file.startsWith('icons/') || /^(?:chart\/)?__next\..*\.txt$/.test(file) ||
-    ['index.html', 'chart/index.html', 'index.txt', 'chart/index.txt', 'manifest.webmanifest'].includes(file)
+    ['index.html', 'chart/index.html', 'index.txt', 'chart/index.txt', 'manifest.webmanifest',
+      'recover-records.html', 'recover-records.js'].includes(file)
   ).filter(file => !file.endsWith('.map'));
   for (const required of ['index.html', 'chart/index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png']) {
     if (!selected.includes(required)) throw new Error(`PWA core resource missing: ${required}`);

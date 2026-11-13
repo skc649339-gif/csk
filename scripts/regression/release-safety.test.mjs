@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';import{readFileSync}from'node:fs';
+import { validateRelease } from '../check-release.mjs';
+const sha='0123456789abcdef0123456789abcdef01234567';
+const valid={event:'workflow_dispatch',repository:'skc649339-gif/csk',ref:'refs/heads/feature/iphone-pwa',confirmation:'PUBLISH_CSK',expectedSha:sha,runSha:sha,checkoutSha:sha};
+assert.equal(validateRelease(valid),sha);
+const bad=[{event:'push'},{event:'pull_request'},{event:'workflow_run'},{event:'schedule'},{event:undefined},{repository:'Renhuai123/ziwei-doushu'},{repository:'another/fork'},{ref:'refs/heads/main'},{ref:'refs/heads/repair/round4'},{ref:'refs/tags/release'},{confirmation:''},{confirmation:'publish_csk'},{expectedSha:'c964193'},{expectedSha:'g'.repeat(40)},{expectedSha:'A'.repeat(40)},{expectedSha:sha+'\n'},{expectedSha:'$(echo unsafe)'},{runSha:'f'.repeat(40)},{checkoutSha:'e'.repeat(40)}];
+for(const change of bad)assert.throws(()=>validateRelease({...valid,...change}));
+const deploy=readFileSync('.github/workflows/deploy-pages.yml','utf8'),ci=readFileSync('.github/workflows/ci.yml','utf8');
+const triggers=deploy.match(/^on:\r?\n([\s\S]*?)(?=^\S)/m)?.[1];assert.ok(triggers);assert.deepEqual([...triggers.matchAll(/^  ([a-z_]+):/gm)].map(m=>m[1]),['workflow_dispatch']);
+assert.match(deploy,/run: node scripts\/check-release\.mjs/);assert.match(deploy,/CSK_EXPECTED_SHA: \$\{\{ inputs\.expected_sha \}\}/);
+assert.match(deploy,/needs: build/);assert.match(deploy,/if: github\.event_name == 'workflow_dispatch'.*github\.ref == 'refs\/heads\/feature\/iphone-pwa'/);
+const beforeDeploy=deploy.split(/^  deploy:/m)[0];assert.ok(!/^\s+(?:pages|id-token): write/m.test(beforeDeploy));
+assert.ok(!/deploy-pages@|configure-pages@|upload-pages-artifact@|pages: write|id-token: write|environment:/m.test(ci));
+assert.match(ci,/^  push:/m);assert.match(ci,/^  pull_request:/m);
+for(const text of [ci,deploy])for(const command of ['npm ci --legacy-peer-deps','npm run typecheck','npm test','npm run test:local','npm run test:engine','npm run build','npm run test:pwa','npm audit'])assert.ok(text.includes('run: '+command),command);
+console.log(`Release safety: ${bad.length+1} context/SHA decisions, manual-only production trigger, read-only push CI and mandatory build/test checks passed.`);
